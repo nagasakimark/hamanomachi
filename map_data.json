@@ -1387,6 +1387,19 @@
         "x": 1466,
         "y": 401
       }
+    },
+    {
+      "point1": {
+        "type": "normal",
+        "x": 1434,
+        "y": 432
+      },
+      "point2": {
+        "name": "hospital",
+        "type": "destination",
+        "x": 1466,
+        "y": 401
+      }
     }
   ]
 }
