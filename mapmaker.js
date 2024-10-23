@@ -2,6 +2,8 @@ const canvas = document.getElementById('mapCanvas');
 const ctx = canvas.getContext('2d');
 const undoBtn = document.getElementById('undoBtn');
 const exportBtn = document.getElementById('exportBtn');
+const importBtn = document.getElementById('importBtn');
+const importInput = document.getElementById('importInput');
 const pointTypeSelector = document.getElementById('pointType');
 
 // Add path option to selector if it doesn't exist
@@ -31,6 +33,65 @@ mapImage.onload = function() {
 };
 
 window.addEventListener('resize', resizeCanvas);
+
+// Import functionality
+importBtn.addEventListener('click', () => {
+    importInput.click();
+});
+
+importInput.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        try {
+            const importedData = JSON.parse(e.target.result);
+            
+            // Reset the current state
+            points = [];
+            connections = [];
+            undoStack = [];
+            
+            // Import points
+            importedData.points.forEach(point => {
+                points.push(point);
+                // Update nextStartId if this is a start point
+                if (point.type === 'start' && point.id) {
+                    const idNumber = parseInt(point.id.replace('start', ''));
+                    nextStartId = Math.max(nextStartId, idNumber + 1);
+                }
+            });
+            
+            // Import connections
+            importedData.connections.forEach(conn => {
+                // Find the actual point objects in our points array
+                const point1 = points.find(p => 
+                    p.x === conn.p1.x && 
+                    p.y === conn.p1.y && 
+                    p.type === conn.p1.type
+                );
+                const point2 = points.find(p => 
+                    p.x === conn.p2.x && 
+                    p.y === conn.p2.y && 
+                    p.type === conn.p2.type
+                );
+                
+                if (point1 && point2) {
+                    connections.push({ p1: point1, p2: point2 });
+                }
+            });
+            
+            draw();
+        } catch (error) {
+            console.error('Error importing map data:', error);
+            alert('Error importing map data. Please check if the file is valid.');
+        }
+    };
+    reader.readAsText(file);
+    // Reset the input so the same file can be imported again if needed
+    event.target.value = '';
+});
 
 function resizeCanvas() {
     const aspectRatio = mapImage.width / mapImage.height;
@@ -234,14 +295,14 @@ exportBtn.addEventListener('click', function() {
             y: Math.round(point.y)
         })),
         connections: connections.map(conn => ({
-            p1: {  // Changed from point1 to p1
+            p1: {
                 x: Math.round(conn.p1.x),
                 y: Math.round(conn.p1.y),
                 type: conn.p1.type,
                 id: conn.p1.id || null,
                 name: conn.p1.name || null
             },
-            p2: {  // Changed from point2 to p2
+            p2: {
                 x: Math.round(conn.p2.x),
                 y: Math.round(conn.p2.y),
                 type: conn.p2.type,

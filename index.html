@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hamanomachi Walk!</title>
+	<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
     <style>
         body {
             margin: 0;
@@ -176,9 +177,20 @@
             cursor: pointer;
             user-select: none;
         }
+		  #congratulations-animation {
+			position: fixed;
+			top: 40%;
+			left: 40%;
+			transform: translate(-50%, -50%);
+			display: none; /* Hidden initially */
+			z-index: 9999; /* Make sure it’s on top */
+		}
     </style>
 </head>
 <body>
+	<dotlottie-player id="congratulations-animation" src="youwin.json" 
+		background="transparent" speed="2" style="width: 900px; height: 900px" direction="1" playMode="normal">
+	</dotlottie-player>
     <div class="game-container">
         <div class="canvas-container">
             <canvas id="mapCanvas"></canvas>
@@ -391,13 +403,7 @@ function initializeGame() {
 
 // Modify the win condition code to show destination name in message
 // In the moveStraight function and anywhere else that checks for victory:
-if (arePointsEqual(currentPlayerPosition, destination)) {
-    gameOver = true;
-    setTimeout(() => {
-        alert(`Congratulations! You've reached ${destination.name}!`);
-        initializeGame();
-    }, 100);
-}
+
 
 function updateCurrentConnections() {
     currentConnections = mapData.connections.filter(conn => 
@@ -450,13 +456,13 @@ function canMoveStraightFor(blocks) {
         );
         
         let bestConnection = null;
-        let smallestAngleDiff = Math.PI / 9; // Updated to ~20 degrees
+        let smallestAngleDiff = Math.PI / 9; // ~20 degrees
         let bestNextAngle = null;
         
         for (const connection of connections) {
             const nextPos = arePointsEqual(connection.p1, currentPos) ? 
                 connection.p2 : connection.p1;
-                
+            
             const dx = nextPos.x - currentPos.x;
             const dy = nextPos.y - currentPos.y;
             const connectionAngle = Math.atan2(dy, dx);
@@ -468,7 +474,7 @@ function canMoveStraightFor(blocks) {
                 continue;
             }
             // For subsequent moves, be slightly more lenient but still stricter than before
-            else if (remainingBlocks < blocks && angleDiff > Math.PI / 6) { // ~30 degrees for subsequent moves
+            else if (remainingBlocks < blocks && angleDiff > Math.PI / 6) {
                 continue;
             }
             
@@ -490,18 +496,51 @@ function canMoveStraightFor(blocks) {
         const nextPos = arePointsEqual(bestConnection.p1, currentPos) ? 
             bestConnection.p2 : bestConnection.p1;
             
-        if (arePointsEqual(nextPos, destination) && remainingBlocks > 1) {
-            return {
-                possible: false,
-                reason: "Path reaches destination before completing all blocks",
-                validBlocks: blocks - remainingBlocks + 1
-            };
+        // Check if this next point connects to any destinations
+        const destinationConnections = mapData.connections.filter(conn => {
+            if (arePointsEqual(conn.p1, nextPos) || arePointsEqual(conn.p2, nextPos)) {
+                const otherPoint = arePointsEqual(conn.p1, nextPos) ? conn.p2 : conn.p1;
+                const mapPoint = mapData.points.find(p => arePointsEqual(p, otherPoint));
+                return mapPoint && mapPoint.type === 'destination';
+            }
+            return false;
+        });
+        
+        // Check if it connects to both goal and non-goal destinations
+        const connectsToGoal = destinationConnections.some(conn => {
+            const otherPoint = arePointsEqual(conn.p1, nextPos) ? conn.p2 : conn.p1;
+            return arePointsEqual(otherPoint, destination);
+        });
+        
+        const connectsToNonGoal = destinationConnections.some(conn => {
+            const otherPoint = arePointsEqual(conn.p1, nextPos) ? conn.p2 : conn.p1;
+            return !arePointsEqual(otherPoint, destination);
+        });
+        
+        // Add the point to our path
+        path.push(nextPos);
+        
+        // Only skip decrementing if it connects to a non-goal destination but NOT to the goal
+        if (!(connectsToNonGoal && !connectsToGoal)) {
+            remainingBlocks--;
         }
         
+        // Update current position for next iteration
         currentPos = { ...nextPos };
         currentAngle = bestNextAngle;
-        path.push(currentPos);
-        remainingBlocks--;
+        
+        // Check if we've reached our goal destination
+        if (arePointsEqual(nextPos, destination)) {
+            // If we still have remaining blocks, that's not valid
+            if (remainingBlocks > 1) {
+                return {
+                    possible: false,
+                    reason: "Path reaches destination too early",
+                    validBlocks: blocks - remainingBlocks + 1
+                };
+            }
+            break;
+        }
     }
     
     return {
@@ -638,14 +677,53 @@ function startPathMovement(path, finalAngle) {
             updateCurrentConnections();
             
             if (!winTriggered && arePointsEqual(currentPlayerPosition, destination)) {
-                winTriggered = true;
-                gameOver = true;
-                setTimeout(() => {
-                    alert('Congratulations! You reached your destination!');
-                    initializeGame();
-                }, 100);
-            }
-            return;
+    winTriggered = true;
+    gameOver = true;
+
+    setTimeout(() => {
+        // Get the Lottie animation player
+        const lottiePlayer = document.getElementById('congratulations-animation');
+        
+        // Make sure the animation starts from the beginning and resets state
+        lottiePlayer.stop(); // Stop to reset animation
+        lottiePlayer.seek(0); // Set animation to the first frame
+
+        // Set the correct speed and make it visible
+        lottiePlayer.speed = 2; // Reset speed each time (or set to your desired speed)
+        lottiePlayer.style.display = 'block';
+        
+        // Play the animation
+        lottiePlayer.play();
+
+        // Define a function to handle what happens when the animation completes
+        function handleAnimationComplete() {
+            // Hide the animation after it completes
+            lottiePlayer.style.display = 'none';
+
+            // Stop the animation and reset it for the future rounds
+            lottiePlayer.stop();
+
+            // Initialize the game again
+            initializeGame();
+
+            // Remove the event listener to avoid stacking listeners
+            lottiePlayer.removeEventListener('complete', handleAnimationComplete);
+        }
+
+        // Listen for the animation to finish
+        lottiePlayer.addEventListener('complete', handleAnimationComplete);
+
+        // Alternative timeout if 'complete' event doesn't fire
+        /*
+        setTimeout(() => {
+            lottiePlayer.style.display = 'none';
+            lottiePlayer.stop(); // Stop animation for reset
+            initializeGame();
+        }, 3000); // Adjust timing based on the animation duration
+        */
+    }, 100);
+}
+return;
         }
         
         targetPlayerPosition = { ...path[currentPathIndex + 1] };
@@ -885,10 +963,10 @@ function drawDebugInfo() {
         
         if (isSpawning) {
             const progress = spawnAnimationTime / SPAWN_ANIMATION_DURATION;
-            const scale_factor = 1 + Math.sin(progress * Math.PI) * 0.3;
+            const scale_factor = 2 + Math.sin(progress * Math.PI) * 0.8;
             ctx.scale(scale_factor, scale_factor);
             ctx.shadowColor = '#00c853';
-            ctx.shadowBlur = 20 * Math.sin(progress * Math.PI * 2);
+            ctx.shadowBlur = 40 * Math.sin(progress * Math.PI * 1);
         }
 
         // Get the appropriate sprite row based on facing direction
