@@ -355,12 +355,12 @@
   ],
   "connections": [
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 266,
         "y": 1011
       },
-      "p2": {
+      "point2": {
         "id": "start2",
         "type": "start",
         "x": 496,
@@ -368,25 +368,25 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "id": "start2",
         "type": "start",
         "x": 496,
         "y": 1017
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 727,
         "y": 1025
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 727,
         "y": 1025
       },
-      "p2": {
+      "point2": {
         "id": "start3",
         "type": "start",
         "x": 802,
@@ -394,37 +394,37 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "id": "start3",
         "type": "start",
         "x": 802,
         "y": 1022
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1097,
         "y": 996
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1097,
         "y": 996
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1212,
         "y": 959
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1212,
         "y": 959
       },
-      "p2": {
+      "point2": {
         "id": "start4",
         "type": "start",
         "x": 1425,
@@ -432,24 +432,24 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 266,
         "y": 1011
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 255,
         "y": 777
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 255,
         "y": 777
       },
-      "p2": {
+      "point2": {
         "id": "start1",
         "type": "start",
         "x": 177,
@@ -457,24 +457,24 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 255,
         "y": 777
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 255,
         "y": 653
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 255,
         "y": 653
       },
-      "p2": {
+      "point2": {
         "name": "bookstore",
         "type": "destination",
         "x": 285,
@@ -482,36 +482,36 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 255,
         "y": 653
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 286,
         "y": 378
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 286,
         "y": 378
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 308,
         "y": 309
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 308,
         "y": 309
       },
-      "p2": {
+      "point2": {
         "name": "soba restaurant",
         "type": "destination",
         "x": 339,
@@ -519,72 +519,72 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 308,
         "y": 309
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 354,
         "y": 192
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 354,
         "y": 192
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 604,
         "y": 257
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 604,
         "y": 257
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 676,
         "y": 48
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 676,
         "y": 48
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 854,
         "y": 111
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 854,
         "y": 111
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 839,
         "y": 159
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 839,
         "y": 159
       },
-      "p2": {
+      "point2": {
         "name": "tonkatsu restaurant",
         "type": "destination",
         "x": 805,
@@ -592,12 +592,12 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 839,
         "y": 159
       },
-      "p2": {
+      "point2": {
         "name": "convenience store 7/11",
         "type": "destination",
         "x": 880,
@@ -605,84 +605,84 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 839,
         "y": 159
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 785,
         "y": 303
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 785,
         "y": 303
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 604,
         "y": 257
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 604,
         "y": 257
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 530,
         "y": 460
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 530,
         "y": 460
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 286,
         "y": 378
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 530,
         "y": 460
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 460,
         "y": 771
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 460,
         "y": 771
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 313,
         "y": 777
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 313,
         "y": 777
       },
-      "p2": {
+      "point2": {
         "name": "udon restaurant",
         "type": "destination",
         "x": 315,
@@ -690,48 +690,48 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 313,
         "y": 777
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 255,
         "y": 777
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 460,
         "y": 771
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 506,
         "y": 771
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 506,
         "y": 771
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 499,
         "y": 947
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 499,
         "y": 947
       },
-      "p2": {
+      "point2": {
         "id": "start2",
         "type": "start",
         "x": 496,
@@ -739,48 +739,48 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 499,
         "y": 947
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 733,
         "y": 949
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 733,
         "y": 949
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 727,
         "y": 1025
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 733,
         "y": 949
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 727,
         "y": 804
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 727,
         "y": 804
       },
-      "p2": {
+      "point2": {
         "name": "fast food restaurant",
         "type": "destination",
         "x": 759,
@@ -788,72 +788,72 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 727,
         "y": 804
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 722,
         "y": 760
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 722,
         "y": 760
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 733,
         "y": 532
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 722,
         "y": 760
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 506,
         "y": 771
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 530,
         "y": 460
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 733,
         "y": 532
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 733,
         "y": 532
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 744,
         "y": 450
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 744,
         "y": 450
       },
-      "p2": {
+      "point2": {
         "name": "castella shop",
         "type": "destination",
         "x": 719,
@@ -861,24 +861,24 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 744,
         "y": 450
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 756,
         "y": 386
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 756,
         "y": 386
       },
-      "p2": {
+      "point2": {
         "name": "flower shop",
         "type": "destination",
         "x": 793,
@@ -886,36 +886,36 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 756,
         "y": 386
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 785,
         "y": 303
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 785,
         "y": 303
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1195,
         "y": 417
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1195,
         "y": 417
       },
-      "p2": {
+      "point2": {
         "name": "post office",
         "type": "destination",
         "x": 1183,
@@ -923,12 +923,12 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1195,
         "y": 417
       },
-      "p2": {
+      "point2": {
         "name": "ramen restaurant",
         "type": "destination",
         "x": 1214,
@@ -936,72 +936,72 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1195,
         "y": 417
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1278,
         "y": 438
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1278,
         "y": 438
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1310,
         "y": 263
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1310,
         "y": 263
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 854,
         "y": 111
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1310,
         "y": 263
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1434,
         "y": 300
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1434,
         "y": 300
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1551,
         "y": 298
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1551,
         "y": 298
       },
-      "p2": {
+      "point2": {
         "name": "temple",
         "type": "destination",
         "x": 1549,
@@ -1009,72 +1009,72 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1434,
         "y": 300
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1433,
         "y": 399
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1433,
         "y": 399
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1434,
         "y": 432
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1434,
         "y": 432
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1278,
         "y": 438
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1278,
         "y": 438
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1234,
         "y": 585
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1234,
         "y": 585
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 888,
         "y": 554
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 888,
         "y": 554
       },
-      "p2": {
+      "point2": {
         "name": "supermarket",
         "type": "destination",
         "x": 887,
@@ -1082,24 +1082,24 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 888,
         "y": 554
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 790,
         "y": 538
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 790,
         "y": 538
       },
-      "p2": {
+      "point2": {
         "name": "chawanmushi restaurant",
         "type": "destination",
         "x": 787,
@@ -1107,36 +1107,36 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 790,
         "y": 538
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 733,
         "y": 532
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 722,
         "y": 760
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 881,
         "y": 752
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 881,
         "y": 752
       },
-      "p2": {
+      "point2": {
         "name": "police station",
         "type": "destination",
         "x": 890,
@@ -1144,24 +1144,24 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 881,
         "y": 752
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 949,
         "y": 749
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 949,
         "y": 749
       },
-      "p2": {
+      "point2": {
         "name": "department store",
         "type": "destination",
         "x": 944,
@@ -1169,48 +1169,48 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 949,
         "y": 749
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1076,
         "y": 745
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1076,
         "y": 745
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1199,
         "y": 739
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1199,
         "y": 739
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1313,
         "y": 733
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1313,
         "y": 733
       },
-      "p2": {
+      "point2": {
         "name": "ice cream shop",
         "type": "destination",
         "x": 1301,
@@ -1218,12 +1218,12 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1313,
         "y": 733
       },
-      "p2": {
+      "point2": {
         "name": "convenience store lawson",
         "type": "destination",
         "x": 1333,
@@ -1231,60 +1231,60 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1313,
         "y": 733
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1424,
         "y": 737
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1424,
         "y": 737
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1427,
         "y": 596
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1427,
         "y": 596
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1234,
         "y": 585
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1427,
         "y": 596
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1434,
         "y": 432
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1424,
         "y": 737
       },
-      "p2": {
+      "point2": {
         "id": "start4",
         "type": "start",
         "x": 1425,
@@ -1292,87 +1292,100 @@
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1212,
         "y": 959
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1205,
         "y": 909
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1205,
         "y": 909
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1199,
         "y": 739
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1097,
         "y": 996
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1079,
         "y": 921
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1079,
         "y": 921
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1076,
         "y": 745
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1079,
         "y": 921
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 733,
         "y": 949
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1234,
         "y": 585
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1199,
         "y": 739
       }
     },
     {
-      "p1": {
+      "point1": {
         "type": "normal",
         "x": 1079,
         "y": 921
       },
-      "p2": {
+      "point2": {
         "type": "normal",
         "x": 1205,
         "y": 909
+      }
+    },
+    {
+      "point1": {
+        "type": "normal",
+        "x": 1433,
+        "y": 399
+      },
+      "point2": {
+        "name": "hospital",
+        "type": "destination",
+        "x": 1466,
+        "y": 401
       }
     }
   ]
