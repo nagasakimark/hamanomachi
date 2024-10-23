@@ -575,7 +575,6 @@ function getSpriteRow(angle) {
 function moveStraight() {
     if (gameOver || isMoving || currentConnections.length === 0 || isSpawning) {
         if (isMoving) {
-            alert("Please wait for current movement to complete");
         }
         return;
     }
@@ -593,7 +592,6 @@ function moveStraight() {
         const message = pathCheck.validBlocks > 0 ?
             `Can only move straight for ${pathCheck.validBlocks} block${pathCheck.validBlocks > 1 ? 's' : ''}. ${pathCheck.reason}` :
             `Cannot move forward: ${pathCheck.reason}`;
-        alert(message);
         return;
     }
     
