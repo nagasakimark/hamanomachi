@@ -252,13 +252,19 @@ const MOVEMENT_SPEED = 3;
 const ROTATION_SPEED = 0.05; // Reduced for smoother rotation
 const ANGLE_TOLERANCE = 0.01;
 const DISTANCE_TOLERANCE = 0.1;
-
+const SPRITE_SIZE = 64; // 256/4 = 64 pixels per sprite
+const SPRITE_COLS = 4;
+const SPRITE_ROWS = 4;
+const ANIMATION_SPEED = 0.15;
+let animationFrame = 0;
+let lastAnimationUpdate = 0;
 // Load assets
 const mapImage = new Image();
 mapImage.src = 'map.png';
 
 const playerImage = new Image();
-playerImage.src = 'player.png';
+playerImage.src = 'playersprite.png';
+
 
 // Load map data
 fetch('map_data.json')
@@ -508,6 +514,23 @@ function canMoveStraightFor(blocks) {
 function isAtTargetAngle() {
     return Math.abs(calculateShortestTurn(playerAngle, targetAngle)) <= ANGLE_TOLERANCE;
 }
+function getSpriteRow(angle) {
+    // Normalize angle to 0-2PI range
+    angle = normalizeAngle(angle);
+    
+    // Convert angle to degrees for easier comparison
+    const degrees = (angle * 180 / Math.PI + 360) % 360;
+    
+    // Up: 45-135 degrees (around 90°)
+    if (degrees >= 45 && degrees < 135) return 0;
+    // Right: 315-45 degrees (around 0°)
+    if (degrees >= 315 || degrees < 45) return 2;
+    // Down: 225-315 degrees (around 270°)
+    if (degrees >= 225 && degrees < 315) return 3;
+    // Left: 135-225 degrees (around 180°)
+    return 1;
+}
+
 
 // Update movement functions to work with forced rotation
 function moveStraight() {
@@ -837,47 +860,72 @@ function drawDebugInfo() {
 
 
         function draw() {
-            if (!canvas || !ctx) return;
-            
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (!canvas || !ctx) return;
+    
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            if (mapImage.complete) {
-                ctx.drawImage(mapImage, 0, 0, canvas.width, canvas.height);
-            }
+    if (mapImage.complete) {
+        ctx.drawImage(mapImage, 0, 0, canvas.width, canvas.height);
+    }
 
-            // Draw paths first so they appear under points
-            drawPaths();
-            drawPoints();
+    drawPaths();
+    drawPoints();
 
-            // Draw player
-            if (currentPlayerPosition && playerImage.complete) {
-                ctx.save();
-                ctx.translate(
-                    currentPlayerPosition.x * scale,
-                    currentPlayerPosition.y * scale
-                );
-                
-                if (isSpawning) {
-                    const progress = spawnAnimationTime / SPAWN_ANIMATION_DURATION;
-                    const scale_factor = 1 + Math.sin(progress * Math.PI) * 0.3;
-                    ctx.scale(scale_factor, scale_factor);
-                    ctx.shadowColor = '#00c853';
-                    ctx.shadowBlur = 20 * Math.sin(progress * Math.PI * 2);
-                }
-                
-                ctx.rotate(playerAngle + Math.PI/2);
-                const playerSize = 80 * scale;
-                ctx.drawImage(
-                    playerImage,
-                    -playerSize/2,
-                    -playerSize/2,
-                    playerSize,
-                    playerSize
-                );
-                
-                ctx.restore();
-            }
+    // Draw player with sprite animation
+    if (currentPlayerPosition && playerImage.complete) {
+        ctx.save();
+        
+        // Position sprite with bottom-middle as origin
+        // Add a small vertical offset to fine-tune the position
+        const verticalOffset = -10; // Adjust this value to move the sprite up or down
+        ctx.translate(
+            currentPlayerPosition.x * scale,
+            (currentPlayerPosition.y * scale) - verticalOffset * scale
+        );
+        
+        if (isSpawning) {
+            const progress = spawnAnimationTime / SPAWN_ANIMATION_DURATION;
+            const scale_factor = 1 + Math.sin(progress * Math.PI) * 0.3;
+            ctx.scale(scale_factor, scale_factor);
+            ctx.shadowColor = '#00c853';
+            ctx.shadowBlur = 20 * Math.sin(progress * Math.PI * 2);
         }
+
+        // Get the appropriate sprite row based on facing direction
+        const spriteRow = getSpriteRow(playerAngle);
+        
+        // Calculate which frame of the animation to use
+        let spriteCol = 0;
+        if (isMoving) {
+            const currentTime = performance.now();
+            if (currentTime - lastAnimationUpdate > 1000 * ANIMATION_SPEED) {
+                animationFrame = (animationFrame + 1) % SPRITE_COLS;
+                lastAnimationUpdate = currentTime;
+            }
+            spriteCol = animationFrame;
+        }
+
+        // Calculate source rectangle from spritesheet
+        const sx = spriteCol * SPRITE_SIZE;
+        const sy = spriteRow * SPRITE_SIZE;
+        
+        // Calculate destination size (scale the 64x64 sprite appropriately)
+        const playerSize = 80 * scale;
+        
+        // Draw the sprite with bottom-middle origin point
+        ctx.drawImage(
+            playerImage,
+            sx, sy,
+            SPRITE_SIZE, SPRITE_SIZE,
+            -playerSize/2, -playerSize, // Changed y-offset to -playerSize to align bottom
+            playerSize, playerSize
+        );
+        
+        ctx.restore();
+    }
+}
+
+
 
         // Add event listeners for both checkboxes
         document.getElementById('showPoints').addEventListener('change', (e) => {
