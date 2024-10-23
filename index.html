@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamanomachi Walk!</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+        }
+
+        .game-container {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            gap: 20px;
+            width: 95vw;
+            height: 95vh;
+        }
+
+        .canvas-container {
+            flex-grow: 1;
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 10px;
+            border: 3px solid #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #mapCanvas {
+            border-radius: 10px;
+            background: #fff;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            min-width: 200px;
+        }
+
+        .controls button {
+            padding: 15px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .controls button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #straightBtn { background: linear-gradient(45deg, #00c853, #69f0ae); color: white; }
+        #leftBtn { background: linear-gradient(45deg, #2196f3, #90caf9); color: white; }
+        #rightBtn { background: linear-gradient(45deg, #ff4081, #ff80ab); color: white; }
+        #turnAroundBtn { background: linear-gradient(45deg, #9c27b0, #ce93d8); color: white; }
+        #goBackBtn { background: linear-gradient(45deg, #ff9800, #ffcc80); color: white; }
+
+        .straight-container {
+            display: flex !important;
+            align-items: center;
+            gap: 8px;
+            padding: 15px 20px !important;
+        }
+
+        .block-input {
+            width: 60px;
+            height: 35px;
+            text-align: center;
+            border: 2px solid white;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-weight: bold;
+            padding: 4px;
+            font-size: 18px;
+        }   
+
+        .block-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+		
+        .mascot-container {
+            position: relative;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .mascot-container img {
+            width: 300px;
+            height: auto;
+        }
+
+        .destination-text {
+            position: absolute;
+            top: 10%;
+            left: 13%;
+			
+            width: 45%;
+            color: #ff4081;
+            font-weight: bold;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+        }
+
+        .half-width {
+            flex: 1;
+        }
+
+        /* Update point size */
+        .point {
+            r: 7.5; /* 1.5x original size */
+        }
+		        .settings-section {
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 2px solid #e9ecef;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .checkbox-container:hover {
+            background: #f0f0f0;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .checkbox-container label {
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="canvas-container">
+            <canvas id="mapCanvas"></canvas>
+        </div>
+        <div class="controls">
+            <div class="mascot-container">
+                <img src="saruku.png" alt="Saruku mascot">
+                <div class="destination-text">Let's walk to the <span id="destination-name"></span></div>
+            </div>
+            <button id="straightBtn" class="straight-container">
+                Go Straight for <input type="number" id="blockCount" value="1" min="1" max="5" class="block-input"> blocks
+            </button>
+            <div class="button-row">
+                <button id="leftBtn" class="half-width">Turn Left</button>
+                <button id="rightBtn" class="half-width">Turn Right</button>
+            </div>
+            <button id="goBackBtn">Go Back</button>
+            <button id="turnAroundBtn">Turn Around</button>
+            
+            <!-- Updated settings section -->
+            <div class="settings-section">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="showPoints">
+                    <label for="showPoints">Show Guide Points</label>
+                </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="showPaths">
+                    <label for="showPaths">Show Guide Paths</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const canvas = document.getElementById('mapCanvas');
+const ctx = canvas.getContext('2d');
+const controlsDiv = document.querySelector('.controls');
+const destinationDisplay = document.createElement('div');
+destinationDisplay.style.padding = '15px';
+destinationDisplay.style.marginTop = '20px';
+destinationDisplay.style.background = 'white';
+destinationDisplay.style.borderRadius = '12px';
+destinationDisplay.style.textAlign = 'center';
+destinationDisplay.style.fontSize = '18px';
+destinationDisplay.style.fontWeight = 'bold';
+destinationDisplay.style.color = '#333';
+destinationDisplay.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
+
+// Game state
+let mapData = {
+    points: [],
+    connections: []
+};
+let currentPlayerPosition = null;
+let targetPlayerPosition = null;
+let currentConnections = [];
+let destination = null;
+let gameOver = false;
+let playerAngle = 0;
+let targetAngle = 0;
+let isMoving = false;
+let scale = 1;
+let forcedRotation = false;
+// Add spawn animation state
+let spawnAnimationTime = 0;
+const SPAWN_ANIMATION_DURATION = 60; // frames
+let isSpawning = false;
+let showPoints = false;
+let showPaths = false;
+// Animation settings
+const MOVEMENT_SPEED = 3;
+const ROTATION_SPEED = 0.05; // Reduced for smoother rotation
+const ANGLE_TOLERANCE = 0.01;
+const DISTANCE_TOLERANCE = 0.1;
+
+// Load assets
+const mapImage = new Image();
+mapImage.src = 'map.png';
+
+const playerImage = new Image();
+playerImage.src = 'player.png';
+
+// Load map data
+fetch('map_data.json')
+    .then(response => response.json())
+    .then(data => {
+        mapData = data;
+        initializeGame();
+        resizeCanvas();
+    })
+    .catch(error => {
+        console.error('Error loading map data:', error);
+    });
+
+function resizeCanvas() {
+    const container = canvas.parentElement;
+    const containerWidth = container.clientWidth - 20;
+    const containerHeight = container.clientHeight - 20;
+    
+    if (mapImage.complete) {
+        const imageRatio = mapImage.width / mapImage.height;
+        const containerRatio = containerWidth / containerHeight;
+        
+        if (containerRatio > imageRatio) {
+            canvas.height = containerHeight;
+            canvas.width = containerHeight * imageRatio;
+            scale = canvas.height / mapImage.height;
+        } else {
+            canvas.width = containerWidth;
+            canvas.height = containerWidth / imageRatio;
+            scale = canvas.width / mapImage.width;
+        }
+    }
+    
+    draw();
+}
+
+function arePointsEqual(p1, p2, tolerance = 0.1) {
+  if (!p1 || !p2) {
+    return false; // Or handle the case as needed
+  }
+
+  return Math.abs(p1.x - p2.x) <= tolerance && Math.abs(p1.y - p2.y) <= tolerance;
+}
+
+function findClosestNextPoint() {
+    let closestDistance = Infinity;
+    let closestConnection = null;
+
+    for (const connection of currentConnections) {
+        const nextPoint = connection.p1.x === currentPlayerPosition.x && 
+                         connection.p1.y === currentPlayerPosition.y ? 
+                         connection.p2 : connection.p1;
+        
+        const distance = Math.sqrt(
+            Math.pow(nextPoint.x - currentPlayerPosition.x, 2) + 
+            Math.pow(nextPoint.y - currentPlayerPosition.y, 2)
+        );
+
+        if (distance < closestDistance) {
+            closestDistance = distance;
+            closestConnection = connection;
+        }
+    }
+
+    return closestConnection;
+}
+
+function initializeGame() {
+    const startPoints = mapData.points.filter(p => p.type === 'start');
+    if (startPoints.length === 0) {
+        console.error('No start points found in map data');
+        return;
+    }
+    
+    // Select random start point
+    const randomStartIndex = Math.floor(Math.random() * startPoints.length);
+    currentPlayerPosition = { ...startPoints[randomStartIndex] };
+    targetPlayerPosition = { ...currentPlayerPosition };
+
+    const destinations = mapData.points.filter(p => p.type === 'destination');
+    if (destinations.length === 0) {
+        console.error('No destination points found in map data');
+        return;
+    }
+    
+    // Select random destination that's not directly connected to start point
+    let validDestinations = destinations.filter(dest => {
+        // Check if destination is not directly connected to start point
+        const directConnection = mapData.connections.some(conn => 
+            (arePointsEqual(conn.p1, currentPlayerPosition) && arePointsEqual(conn.p2, dest)) ||
+            (arePointsEqual(conn.p2, currentPlayerPosition) && arePointsEqual(conn.p1, dest))
+        );
+        return !directConnection;
+    });
+
+    // If no valid destinations found, use all destinations
+    if (validDestinations.length === 0) {
+        validDestinations = destinations;
+    }
+
+    const randomDestIndex = Math.floor(Math.random() * validDestinations.length);
+    destination = { ...validDestinations[randomDestIndex] };
+
+    // Update destination display
+    destinationDisplay.innerHTML = `Please go to:<br>${destination.name}`;
+
+    updateCurrentConnections();
+    
+    // Initialize spawn animation
+    spawnAnimationTime = 0;
+    isSpawning = true;
+    
+    // Set initial angle towards closest point
+    const closestConnection = findClosestNextPoint();
+    if (closestConnection) {
+        playerAngle = getConnectionAngle(closestConnection);
+        targetAngle = playerAngle;
+    }
+
+    gameOver = false;
+    isMoving = false;
+    draw();
+}
+
+// Modify the win condition code to show destination name in message
+// In the moveStraight function and anywhere else that checks for victory:
+if (arePointsEqual(currentPlayerPosition, destination)) {
+    gameOver = true;
+    setTimeout(() => {
+        alert(`Congratulations! You've reached ${destination.name}!`);
+        initializeGame();
+    }, 100);
+}
+
+function updateCurrentConnections() {
+    currentConnections = mapData.connections.filter(conn => 
+        arePointsEqual(conn.p1, currentPlayerPosition) ||
+        arePointsEqual(conn.p2, currentPlayerPosition)
+    );
+
+    // Debug output to help identify connection issues
+    console.log('Current position:', currentPlayerPosition);
+    console.log('Available connections:', currentConnections);
+}
+
+function getConnectionAngle(connection) {
+    const isP1 = arePointsEqual(connection.p1, currentPlayerPosition);
+    const targetPoint = isP1 ? connection.p2 : connection.p1;
+    const dx = targetPoint.x - currentPlayerPosition.x;
+    const dy = targetPoint.y - currentPlayerPosition.y;
+    return Math.atan2(dy, dx);
+}
+
+function normalizeAngle(angle) {
+    while (angle > Math.PI) angle -= 2 * Math.PI;
+    while (angle <= -Math.PI) angle += 2 * Math.PI;
+    return angle;
+}
+
+function calculateShortestTurn(currentAngle, targetAngle) {
+    let diff = normalizeAngle(targetAngle - currentAngle);
+    // Ensure we take the shortest path
+    if (diff > Math.PI) {
+        diff -= 2 * Math.PI;
+    } else if (diff < -Math.PI) {
+        diff += 2 * Math.PI;
+    }
+    return diff;
+}
+
+function canMoveStraightFor(blocks) {
+    if (blocks <= 0) return false;
+    
+    let currentPos = { ...currentPlayerPosition };
+    let currentAngle = playerAngle;
+    let remainingBlocks = blocks;
+    let path = [currentPos];
+    
+    while (remainingBlocks > 0) {
+        let connections = mapData.connections.filter(conn => 
+            arePointsEqual(conn.p1, currentPos) ||
+            arePointsEqual(conn.p2, currentPos)
+        );
+        
+        let bestConnection = null;
+        let smallestAngleDiff = Math.PI / 9; // Updated to ~20 degrees
+        let bestNextAngle = null;
+        
+        for (const connection of connections) {
+            const nextPos = arePointsEqual(connection.p1, currentPos) ? 
+                connection.p2 : connection.p1;
+                
+            const dx = nextPos.x - currentPos.x;
+            const dy = nextPos.y - currentPos.y;
+            const connectionAngle = Math.atan2(dy, dx);
+            
+            let angleDiff = Math.abs(normalizeAngle(connectionAngle - currentAngle));
+            
+            // For the first move, be strict about the angle
+            if (remainingBlocks === blocks && angleDiff > Math.PI / 9) {
+                continue;
+            }
+            // For subsequent moves, be slightly more lenient but still stricter than before
+            else if (remainingBlocks < blocks && angleDiff > Math.PI / 6) { // ~30 degrees for subsequent moves
+                continue;
+            }
+            
+            if (angleDiff < smallestAngleDiff) {
+                smallestAngleDiff = angleDiff;
+                bestConnection = connection;
+                bestNextAngle = connectionAngle;
+            }
+        }
+        
+        if (!bestConnection) {
+            return {
+                possible: false,
+                reason: "No valid path forward",
+                validBlocks: blocks - remainingBlocks
+            };
+        }
+        
+        const nextPos = arePointsEqual(bestConnection.p1, currentPos) ? 
+            bestConnection.p2 : bestConnection.p1;
+            
+        if (arePointsEqual(nextPos, destination) && remainingBlocks > 1) {
+            return {
+                possible: false,
+                reason: "Path reaches destination before completing all blocks",
+                validBlocks: blocks - remainingBlocks + 1
+            };
+        }
+        
+        currentPos = { ...nextPos };
+        currentAngle = bestNextAngle;
+        path.push(currentPos);
+        remainingBlocks--;
+    }
+    
+    return {
+        possible: true,
+        path: path,
+        finalAngle: currentAngle
+    };
+}
+
+function isAtTargetAngle() {
+    return Math.abs(calculateShortestTurn(playerAngle, targetAngle)) <= ANGLE_TOLERANCE;
+}
+
+// Update movement functions to work with forced rotation
+function moveStraight() {
+    if (gameOver || isMoving || currentConnections.length === 0 || isSpawning) {
+        if (isMoving) {
+            alert("Please wait for current movement to complete");
+        }
+        return;
+    }
+    
+    const blocks = parseInt(document.getElementById('blockCount').value) || 1;
+    if (blocks > 5) {
+        alert("Maximum movement is 5 blocks");
+        document.getElementById('blockCount').value = "5";
+        return;
+    }
+    
+    const pathCheck = canMoveStraightFor(blocks);
+    
+    if (!pathCheck.possible) {
+        const message = pathCheck.validBlocks > 0 ?
+            `Can only move straight for ${pathCheck.validBlocks} block${pathCheck.validBlocks > 1 ? 's' : ''}. ${pathCheck.reason}` :
+            `Cannot move forward: ${pathCheck.reason}`;
+        alert(message);
+        return;
+    }
+    
+    forcedRotation = false;  // Reset forced rotation flag for normal movement
+    startPathMovement(pathCheck.path, pathCheck.finalAngle);
+}
+
+function turnRight() {
+    if (gameOver || isMoving || currentConnections.length === 0 || isSpawning) {
+        return;
+    }
+    
+    const currentAngle = normalizeAngle(playerAngle);
+    const possibleTurns = currentConnections
+        .map(connection => {
+            const angle = getConnectionAngle(connection);
+            let angleDiff = normalizeAngle(angle - currentAngle);
+            if (angleDiff < 0) angleDiff += 2 * Math.PI;
+            return { connection, angle, angleDiff };
+        })
+        .filter(turn => turn.angleDiff > 0.1) // Remove tiny angles
+        .sort((a, b) => a.angleDiff - b.angleDiff);
+
+    if (possibleTurns.length > 0) {
+        targetAngle = possibleTurns[0].angle;
+        forcedRotation = true;
+    }
+}
+
+// Update turnLeft function to be more responsive
+function turnLeft() {
+    if (gameOver || isMoving || currentConnections.length === 0 || isSpawning) {
+        return;
+    }
+    
+    const currentAngle = normalizeAngle(playerAngle);
+    const possibleTurns = currentConnections
+        .map(connection => {
+            const angle = getConnectionAngle(connection);
+            let angleDiff = normalizeAngle(angle - currentAngle);
+            if (angleDiff > 0) angleDiff -= 2 * Math.PI;
+            return { connection, angle, angleDiff };
+        })
+        .filter(turn => turn.angleDiff < -0.1) // Remove tiny angles
+        .sort((a, b) => b.angleDiff - a.angleDiff);
+
+    if (possibleTurns.length > 0) {
+        targetAngle = possibleTurns[0].angle;
+        forcedRotation = true;
+    }
+}
+
+function startPathMovement(path, finalAngle) {
+    if (path.length < 2) return;
+    
+    let currentPathIndex = 0;
+    let winTriggered = false;
+    
+    function moveToNextPoint() {
+        if (currentPathIndex >= path.length - 1) {
+            // Movement complete
+            currentPlayerPosition = { ...path[path.length - 1] };
+            
+            // Only adjust facing direction if this is the final destination
+            // and we're not in the middle of a multi-block move
+            if (path.length === 2) { // Single block movement
+                const straightestPath = findStraightestPath();
+                if (straightestPath) {
+                    const nextPoint = arePointsEqual(straightestPath.p1, currentPlayerPosition) ? 
+                        straightestPath.p2 : straightestPath.p1;
+                    const dx = nextPoint.x - currentPlayerPosition.x;
+                    const dy = nextPoint.y - currentPlayerPosition.y;
+                    targetAngle = Math.atan2(dy, dx);
+                }
+            } else {
+                // For multi-block movement, use the provided finalAngle
+                targetAngle = finalAngle;
+            }
+            
+            isMoving = false;
+            updateCurrentConnections();
+            
+            if (!winTriggered && arePointsEqual(currentPlayerPosition, destination)) {
+                winTriggered = true;
+                gameOver = true;
+                setTimeout(() => {
+                    alert('Congratulations! You reached your destination!');
+                    initializeGame();
+                }, 100);
+            }
+            return;
+        }
+        
+        targetPlayerPosition = { ...path[currentPathIndex + 1] };
+        isMoving = true;
+        
+        const checkInterval = setInterval(() => {
+            if (!isMoving) {
+                clearInterval(checkInterval);
+                currentPathIndex++;
+                moveToNextPoint();
+            }
+        }, 50);
+    }
+    
+    moveToNextPoint();
+}
+
+function goBack() {
+    if (gameOver || isMoving || currentConnections.length === 0 || isSpawning) {
+        return;
+    }
+
+    // Calculate the backward angle (opposite of current facing direction)
+    const backwardAngle = normalizeAngle(playerAngle + Math.PI);
+    let bestConnection = null;
+    let smallestAngleDiff = Math.PI / 2; // Only allow movement within 90 degrees of backward
+
+    for (const connection of currentConnections) {
+        const backPoint = arePointsEqual(connection.p1, currentPlayerPosition) ? 
+            connection.p2 : connection.p1;
+        
+        const dx = backPoint.x - currentPlayerPosition.x;
+        const dy = backPoint.y - currentPlayerPosition.y;
+        const connectionAngle = Math.atan2(dy, dx);
+        
+        const angleDiff = Math.abs(normalizeAngle(connectionAngle - backwardAngle));
+        
+        if (angleDiff < smallestAngleDiff) {
+            smallestAngleDiff = angleDiff;
+            bestConnection = connection;
+        }
+    }
+
+    if (bestConnection) {
+        const backPoint = arePointsEqual(bestConnection.p1, currentPlayerPosition) ? 
+            bestConnection.p2 : bestConnection.p1;
+        
+        targetPlayerPosition = { ...backPoint };
+        isMoving = true;
+        // Keep the current angle instead of rotating to face the movement direction
+        // This creates the "reversing" effect
+    }
+}
+
+function turnAround() {
+    if (gameOver || isMoving || isSpawning) {
+        return;
+    }
+    
+    if (currentConnections.length === 0) {
+        return;
+    }
+    
+    // Calculate exact opposite angle
+    targetAngle = normalizeAngle(playerAngle + Math.PI);
+    forcedRotation = true;
+    
+    // Instead of immediately looking for a valid connection,
+    // just rotate the player first. They can then move backwards
+    // using the goBack function if desired.
+}
+
+function findStraightestPath() {
+    if (currentConnections.length === 0) return null;
+
+    const currentAngle = normalizeAngle(playerAngle);
+    let bestConnection = null;
+    let smallestAngleDiff = Math.PI / 9; // Changed to ~20 degrees (π/9 ≈ 20°) from 45 degrees (π/4)
+
+    for (const connection of currentConnections) {
+        const nextPoint = arePointsEqual(connection.p1, currentPlayerPosition) ? 
+            connection.p2 : connection.p1;
+        
+        const dx = nextPoint.x - currentPlayerPosition.x;
+        const dy = nextPoint.y - currentPlayerPosition.y;
+        const connectionAngle = Math.atan2(dy, dx);
+        
+        const angleDiff = Math.abs(normalizeAngle(connectionAngle - currentAngle));
+        
+        if (angleDiff < smallestAngleDiff) {
+            smallestAngleDiff = angleDiff;
+            bestConnection = connection;
+        }
+    }
+
+    return bestConnection;
+}
+
+function animate() {
+    if (isSpawning) {
+        spawnAnimationTime++;
+        if (spawnAnimationTime >= SPAWN_ANIMATION_DURATION) {
+            isSpawning = false;
+        }
+    }
+
+    if (isMoving) {
+        const dx = targetPlayerPosition.x - currentPlayerPosition.x;
+        const dy = targetPlayerPosition.y - currentPlayerPosition.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance > MOVEMENT_SPEED) {
+            // Only update movement angle if we're not in a forced rotation
+            if (!forcedRotation) {
+                const movementAngle = Math.atan2(dy, dx);
+                targetAngle = movementAngle;
+            }
+            
+            currentPlayerPosition.x += (dx / distance) * MOVEMENT_SPEED;
+            currentPlayerPosition.y += (dy / distance) * MOVEMENT_SPEED;
+        } else {
+            // Snap to exact position when close enough
+            currentPlayerPosition = { ...targetPlayerPosition };
+            isMoving = false;
+            updateCurrentConnections();
+            forcedRotation = false;  // Reset forced rotation flag
+        }
+    }
+
+    // Only adjust angle if there's a significant difference
+    const angleDiff = calculateShortestTurn(playerAngle, targetAngle);
+    if (Math.abs(angleDiff) > ANGLE_TOLERANCE) {
+        const rotationDirection = Math.sign(angleDiff);
+        const rotationAmount = Math.min(Math.abs(angleDiff), ROTATION_SPEED);
+        playerAngle = normalizeAngle(playerAngle + rotationDirection * rotationAmount);
+    } else {
+        // Snap to exact angle when very close
+        playerAngle = targetAngle;
+    }
+
+    draw();
+    requestAnimationFrame(animate);
+}
+
+function drawDebugInfo() {
+    if (!canvas || !ctx || !currentPlayerPosition || !currentConnections) return;
+    
+    // Only proceed if we have valid connections
+    if (Array.isArray(currentConnections) && currentConnections.length > 0) {
+        // Draw current connections in a distinct color
+        ctx.strokeStyle = 'rgba(255, 255, 0, 0.8)';
+        ctx.lineWidth = 5;
+        currentConnections.forEach(conn => {
+            if (conn && conn.p1 && conn.p2) {  // Check if connection points exist
+                ctx.beginPath();
+                ctx.moveTo(conn.p1.x * scale, conn.p1.y * scale);
+                ctx.lineTo(conn.p2.x * scale, conn.p2.y * scale);
+                ctx.stroke();
+            }
+        });
+    }
+    
+    // Draw debug circle around current position only if we have a valid position
+    if (currentPlayerPosition.x !== undefined && currentPlayerPosition.y !== undefined) {
+        ctx.strokeStyle = 'rgba(255, 0, 0, 0.5)';
+        ctx.beginPath();
+        ctx.arc(currentPlayerPosition.x * scale, currentPlayerPosition.y * scale, 10 * scale, 0, Math.PI * 2);
+        ctx.stroke();
+    }
+}
+
+        function drawPaths() {
+            if (!showPaths) return;
+            
+            // Draw all connections as paths
+            ctx.strokeStyle = 'rgba(255, 0, 0, 0.3)'; // Light blue with transparency
+            ctx.lineWidth = 4 * scale;
+            ctx.lineCap = 'round';
+            
+            mapData.connections.forEach(connection => {
+                ctx.beginPath();
+                ctx.moveTo(connection.p1.x * scale, connection.p1.y * scale);
+                ctx.lineTo(connection.p2.x * scale, connection.p2.y * scale);
+                ctx.stroke();
+            });
+
+            // Draw current available paths in a more prominent color
+            if (currentConnections && currentConnections.length > 0) {
+                ctx.strokeStyle = 'rgba(255, 0, 0, 0.6)'; // More opaque blue for available paths
+                ctx.lineWidth = 6 * scale;
+                
+                currentConnections.forEach(connection => {
+                    ctx.beginPath();
+                    ctx.moveTo(connection.p1.x * scale, connection.p1.y * scale);
+                    ctx.lineTo(connection.p2.x * scale, connection.p2.y * scale);
+                    ctx.stroke();
+                });
+            }
+        }
+
+        function drawPoints() {
+            if (!showPoints) return;
+            
+            mapData.points.forEach(point => {
+                ctx.fillStyle = point.type === 'destination' ? '#ff4081' : 
+                               point.type === 'start' ? '#00c853' : '#2196f3';
+                ctx.beginPath();
+                ctx.arc(point.x * scale, point.y * scale, 7.5 * scale, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
+
+
+        function draw() {
+            if (!canvas || !ctx) return;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            if (mapImage.complete) {
+                ctx.drawImage(mapImage, 0, 0, canvas.width, canvas.height);
+            }
+
+            // Draw paths first so they appear under points
+            drawPaths();
+            drawPoints();
+
+            // Draw player
+            if (currentPlayerPosition && playerImage.complete) {
+                ctx.save();
+                ctx.translate(
+                    currentPlayerPosition.x * scale,
+                    currentPlayerPosition.y * scale
+                );
+                
+                if (isSpawning) {
+                    const progress = spawnAnimationTime / SPAWN_ANIMATION_DURATION;
+                    const scale_factor = 1 + Math.sin(progress * Math.PI) * 0.3;
+                    ctx.scale(scale_factor, scale_factor);
+                    ctx.shadowColor = '#00c853';
+                    ctx.shadowBlur = 20 * Math.sin(progress * Math.PI * 2);
+                }
+                
+                ctx.rotate(playerAngle + Math.PI/2);
+                const playerSize = 80 * scale;
+                ctx.drawImage(
+                    playerImage,
+                    -playerSize/2,
+                    -playerSize/2,
+                    playerSize,
+                    playerSize
+                );
+                
+                ctx.restore();
+            }
+        }
+
+        // Add event listeners for both checkboxes
+        document.getElementById('showPoints').addEventListener('change', (e) => {
+            showPoints = e.target.checked;
+            draw();
+        });
+
+        document.getElementById('showPaths').addEventListener('change', (e) => {
+            showPaths = e.target.checked;
+            draw();
+        });
+
+function updateDestinationDisplay() {
+            const destinationSpan = document.getElementById('destination-name');
+            if (destinationSpan && destination) {
+                destinationSpan.textContent = destination.name;
+            }
+        }
+
+        // Replace initializeGame destination display update
+        const originalInitializeGame = initializeGame;
+        initializeGame = function() {
+            originalInitializeGame();
+            updateDestinationDisplay();
+        };
+
+// Event listeners
+document.getElementById('straightBtn').addEventListener('click', moveStraight);
+document.getElementById('blockCount').addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent button click when clicking the input
+});
+document.getElementById('leftBtn').addEventListener('click', turnLeft);
+document.getElementById('rightBtn').addEventListener('click', turnRight);
+document.getElementById('turnAroundBtn').addEventListener('click', turnAround);
+document.getElementById('goBackBtn').addEventListener('click', goBack);
+window.addEventListener('resize', resizeCanvas);
+
+// Keyboard controls
+document.addEventListener('keydown', (e) => {
+    switch(e.key) {
+        case 'ArrowUp':
+        case 'w':
+            moveStraight();
+            break;
+        case 'ArrowLeft':
+        case 'a':
+            turnLeft();
+            break;
+        case 'ArrowRight':
+        case 'd':
+            turnRight();
+            break;
+    }
+});
+
+// Initialize
+mapImage.onload = () => {
+    resizeCanvas();
+};
+
+// Start animation loop
+animate();
+    </script>
+</body>
+</html>

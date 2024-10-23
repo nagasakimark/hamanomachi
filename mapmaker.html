@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Maker</title>
+    <link rel="stylesheet" href="mapMaker.css">
+</head>
+<body>
+    <canvas id="mapCanvas"></canvas>
+    <div class="controls">
+        <label for="pointType">Point Type:</label>
+        <select id="pointType">
+            <option value="start">Start Point</option>
+            <option value="normal">Normal Point</option>
+            <option value="destination">Destination Point</option>
+        </select>
+        <button id="undoBtn">Undo</button>
+        <button id="exportBtn">Export</button>
+    </div>
+
+    <script src="mapMaker.js"></script>
+</body>
+</html>
