@@ -366,11 +366,6 @@
       "type": "littlebit"
     },
     {
-      "x": 1437,
-      "y": 403,
-      "type": "littlebit"
-    },
-    {
       "x": 1182,
       "y": 416,
       "type": "littlebit"
@@ -538,8 +533,8 @@
       "name": "hospital"
     },
     {
-      "x": 1434,
-      "y": 432,
+      "x": 1436,
+      "y": 420,
       "type": "normal"
     }
   ],
@@ -1938,22 +1933,6 @@
     },
     {
       "p1": {
-        "x": 1437,
-        "y": 403,
-        "type": "littlebit",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1434,
-        "y": 300,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
         "x": 854,
         "y": 111,
         "type": "normal",
@@ -2482,9 +2461,41 @@
     },
     {
       "p1": {
-        "x": 1437,
-        "y": 403,
+        "x": 1430,
+        "y": 517,
         "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1436,
+        "y": 420,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1436,
+        "y": 420,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1434,
+        "y": 300,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1436,
+        "y": 420,
+        "type": "normal",
         "id": null,
         "name": null
       },
@@ -2498,24 +2509,8 @@
     },
     {
       "p1": {
-        "x": 1430,
-        "y": 517,
-        "type": "littlebit",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1434,
-        "y": 432,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1434,
-        "y": 432,
+        "x": 1436,
+        "y": 420,
         "type": "normal",
         "id": null,
         "name": null
@@ -2523,22 +2518,6 @@
       "p2": {
         "x": 1352,
         "y": 435,
-        "type": "littlebit",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1434,
-        "y": 432,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1437,
-        "y": 403,
         "type": "littlebit",
         "id": null,
         "name": null

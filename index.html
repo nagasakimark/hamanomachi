@@ -869,7 +869,6 @@ function moveLittleBit() {
     const pathCheck = canMoveLittleBitFor(blocks);
     
     if (!pathCheck.possible) {
-        alert(`Cannot move forward: ${pathCheck.reason}`);
         return;
     }
     
