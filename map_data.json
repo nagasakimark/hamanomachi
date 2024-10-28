@@ -441,11 +441,6 @@
       "type": "littlebit"
     },
     {
-      "x": 1090,
-      "y": 190,
-      "type": "littlebit"
-    },
-    {
       "x": 1424,
       "y": 813,
       "type": "littlebit"
@@ -536,6 +531,16 @@
       "x": 1304,
       "y": 260,
       "type": "normal"
+    },
+    {
+      "x": 1023,
+      "y": 162,
+      "type": "littlebit"
+    },
+    {
+      "x": 1178,
+      "y": 216,
+      "type": "littlebit"
     }
   ],
   "connections": [
@@ -1350,22 +1355,6 @@
       "p2": {
         "x": 255,
         "y": 777,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1090,
-        "y": 190,
-        "type": "littlebit",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 854,
-        "y": 111,
         "type": "normal",
         "id": null,
         "name": null
@@ -2461,16 +2450,48 @@
     },
     {
       "p1": {
-        "x": 1304,
-        "y": 260,
+        "x": 854,
+        "y": 111,
         "type": "normal",
         "id": null,
         "name": null
       },
       "p2": {
-        "x": 1090,
-        "y": 190,
+        "x": 1023,
+        "y": 162,
         "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1023,
+        "y": 162,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1178,
+        "y": 216,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1178,
+        "y": 216,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1304,
+        "y": 260,
+        "type": "normal",
         "id": null,
         "name": null
       }
