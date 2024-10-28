@@ -34,6 +34,11 @@ mapImage.onload = function() {
 
 window.addEventListener('resize', resizeCanvas);
 
+// Prevent context menu from showing up on right-click
+canvas.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+});
+
 // Import functionality
 importBtn.addEventListener('click', () => {
     importInput.click();
@@ -120,6 +125,63 @@ function getNearestPoint(x, y, threshold = Infinity) {
     return nearestPoint;
 }
 
+// New function to find the nearest connection and calculate the point on the line
+function getNearestConnection(x, y, threshold = 20) {
+    let nearestConnection = null;
+    let nearestPoint = null;
+    let minDistance = threshold;
+
+    connections.forEach(conn => {
+        const p1x = conn.p1.x * canvas.width / mapImage.width;
+        const p1y = conn.p1.y * canvas.height / mapImage.height;
+        const p2x = conn.p2.x * canvas.width / mapImage.width;
+        const p2y = conn.p2.y * canvas.height / mapImage.height;
+        const clickX = x * canvas.width / mapImage.width;
+        const clickY = y * canvas.height / mapImage.height;
+
+        // Calculate distance from point to line segment
+        const A = clickX - p1x;
+        const B = clickY - p1y;
+        const C = p2x - p1x;
+        const D = p2y - p1y;
+
+        const dot = A * C + B * D;
+        const lenSq = C * C + D * D;
+        let param = -1;
+
+        if (lenSq !== 0) param = dot / lenSq;
+
+        let xx, yy;
+
+        if (param < 0) {
+            xx = p1x;
+            yy = p1y;
+        } else if (param > 1) {
+            xx = p2x;
+            yy = p2y;
+        } else {
+            xx = p1x + param * C;
+            yy = p1y + param * D;
+        }
+
+        const dx = clickX - xx;
+        const dy = clickY - yy;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < minDistance) {
+            minDistance = distance;
+            nearestConnection = conn;
+            // Convert back to image coordinates
+            nearestPoint = {
+                x: xx * mapImage.width / canvas.width,
+                y: yy * mapImage.height / canvas.height
+            };
+        }
+    });
+
+    return { connection: nearestConnection, point: nearestPoint };
+}
+
 function promptForDestinationName() {
     return new Promise((resolve) => {
         const name = prompt('Enter a name for this destination:', '');
@@ -128,16 +190,72 @@ function promptForDestinationName() {
 }
 
 canvas.addEventListener('mousedown', function(event) {
+    if (event.button === 2) { // Right click
+        event.preventDefault();
+        const rect = canvas.getBoundingClientRect();
+        const x = (event.clientX - rect.left) * (mapImage.width / canvas.width);
+        const y = (event.clientY - rect.top) * (mapImage.height / canvas.height);
+        
+        const pointToDelete = getNearestPoint(x, y, 20); // Using 20 as threshold for deletion
+        if (pointToDelete) {
+            deletePoint(pointToDelete);
+        }
+        return;
+    }
+    
     const rect = canvas.getBoundingClientRect();
     const x = (event.clientX - rect.left) * (mapImage.width / canvas.width);
     const y = (event.clientY - rect.top) * (mapImage.height / canvas.height);
 
     initialClickPos = { x, y };
+    
     if (pointTypeSelector.value === 'path') {
+        // Check for existing point first
         startPoint = getNearestPoint(x, y, 30);
+        
+        // If no existing point found, check for nearby connection
+        if (!startPoint) {
+            const { connection, point } = getNearestConnection(x, y);
+            if (connection) {
+                // Create new point at the nearest position on the line
+                const newPoint = { 
+                    x: point.x,
+                    y: point.y,
+                    type: 'path'
+                };
+                
+                // Add the new point and create new connections
+                points.push(newPoint);
+                connections.push(
+                    { p1: connection.p1, p2: newPoint },
+                    { p1: newPoint, p2: connection.p2 }
+                );
+                
+                // Remove the original connection
+                const connIndex = connections.indexOf(connection);
+                if (connIndex > -1) {
+                    connections.splice(connIndex, 1);
+                }
+                
+                // Save to undo stack
+                undoStack.push({
+                    action: 'splitConnection',
+                    originalConnection: connection,
+                    newPoint: newPoint,
+                    newConnections: [
+                        { p1: connection.p1, p2: newPoint },
+                        { p1: newPoint, p2: connection.p2 }
+                    ]
+                });
+                
+                draw();
+                return;
+            }
+        }
     } else {
         startPoint = getNearestPoint(x, y);
     }
+    
     isDragging = false;
     currentlyDrawing = true;
 });
@@ -180,17 +298,8 @@ canvas.addEventListener('mouseup', async function(event) {
 
     const pointType = pointTypeSelector.value;
 
-    if (isDragging && startPoint) {
-        const nearestEndPoint = getNearestPoint(x, y, 30);
-        
-        if (pointType === 'path') {
-            if (nearestEndPoint && nearestEndPoint !== startPoint) {
-                connectPoints(startPoint, nearestEndPoint);
-            }
-        } else if (nearestEndPoint && nearestEndPoint !== startPoint && startPoint.type === 'start') {
-            connectPoints(startPoint, nearestEndPoint);
-        }
-    } else if (pointType !== 'path') {
+    if (!isDragging) {
+        // Simple click to add a new point
         const newPoint = { x, y, type: pointType };
         
         if (pointType === 'start') {
@@ -200,9 +309,78 @@ canvas.addEventListener('mouseup', async function(event) {
             newPoint.name = name;
         }
         
-        points.push(newPoint);
-        undoStack.push({ action: 'addPoint', point: newPoint });
+        // Check if we're clicking on an existing path
+        const { connection, point: snapPoint } = getNearestConnection(x, y);
+        if (connection) {
+            // Use the exact point on the path instead of the clicked coordinates
+            newPoint.x = snapPoint.x;
+            newPoint.y = snapPoint.y;
+            
+            // Add the new point
+            points.push(newPoint);
+            
+            // Create new connections
+            connections.push(
+                { p1: connection.p1, p2: newPoint },
+                { p1: newPoint, p2: connection.p2 }
+            );
+            
+            // Remove the original connection
+            const connIndex = connections.indexOf(connection);
+            if (connIndex > -1) {
+                connections.splice(connIndex, 1);
+            }
+            
+            // Save to undo stack
+            undoStack.push({
+                action: 'splitConnection',
+                originalConnection: connection,
+                newPoint: newPoint,
+                newConnections: [
+                    { p1: connection.p1, p2: newPoint },
+                    { p1: newPoint, p2: connection.p2 }
+                ]
+            });
+        } else {
+            // Normal point addition
+            points.push(newPoint);
+            undoStack.push({ action: 'addPoint', point: newPoint });
+        }
         draw();
+    } else if (startPoint) {
+        // Handle dragging existing points or creating new connections
+        const nearestEndPoint = getNearestPoint(x, y, 30);
+        
+        if (nearestEndPoint && nearestEndPoint !== startPoint) {
+            connectPoints(startPoint, nearestEndPoint);
+        } else {
+            // Check if we're dropping onto a path
+            const { connection, point: snapPoint } = getNearestConnection(x, y);
+            if (connection) {
+                // Add new connections
+                connections.push(
+                    { p1: connection.p1, p2: startPoint },
+                    { p1: startPoint, p2: connection.p2 }
+                );
+                
+                // Remove the original connection
+                const connIndex = connections.indexOf(connection);
+                if (connIndex > -1) {
+                    connections.splice(connIndex, 1);
+                }
+                
+                // Save to undo stack
+                undoStack.push({
+                    action: 'splitConnection',
+                    originalConnection: connection,
+                    newPoint: startPoint,
+                    newConnections: [
+                        { p1: connection.p1, p2: startPoint },
+                        { p1: startPoint, p2: connection.p2 }
+                    ]
+                });
+            }
+        }
     }
 
     startPoint = null;
@@ -210,6 +388,29 @@ canvas.addEventListener('mouseup', async function(event) {
     currentlyDrawing = false;
     draw();
 });
+
+function deletePoint(point) {
+    // Save the current state for undo
+    const deletedConnections = connections.filter(conn => 
+        conn.p1 === point || conn.p2 === point
+    );
+    
+    undoStack.push({
+        action: 'deletePoint',
+        point: point,
+        connections: deletedConnections
+    });
+
+    // Remove all connections involving this point
+    connections = connections.filter(conn => 
+        conn.p1 !== point && conn.p2 !== point
+    );
+
+    // Remove the point itself
+    points = points.filter(p => p !== point);
+    
+    draw();
+}
 
 function connectPoints(p1, p2) {
     const connectionExists = connections.some(conn => 
@@ -227,15 +428,42 @@ function undo() {
     const lastAction = undoStack.pop();
     if (!lastAction) return;
 
-    if (lastAction.action === 'addPoint') {
-        points.pop();
-        if (lastAction.point.type === 'start') {
-            nextStartId--;  // Decrement the counter when removing a start point
-        }
-    } else if (lastAction.action === 'connectPoints') {
-        connections.pop();
+    switch (lastAction.action) {
+        case 'addPoint':
+            points.pop();
+            if (lastAction.point.type === 'start') {
+                nextStartId--;
+            }
+            break;
+        case 'connectPoints':
+            connections.pop();
+            break;
+        case 'deletePoint':
+            points.push(lastAction.point);
+            connections.push(...lastAction.connections);
+            break;
+        case 'splitConnection':
+            // Remove the new point
+            points = points.filter(p => p !== lastAction.newPoint);
+            // Remove the new connections
+            connections = connections.filter(conn => 
+                !lastAction.newConnections.includes(conn)
+            );
+            // Restore the original connection
+            connections.push(lastAction.originalConnection);
+            break;
     }
     draw();
+}
+
+function getColorForPointType(type) {
+    switch (type) {
+        case 'start': return '#00ff00';
+        case 'destination': return '#0000ff';
+        case 'path': return '#ff0000';
+        case 'littlebit': return '#ffa500'; // Orange color for littlebit points
+        default: return '#ff0000';
+    }
 }
 
 function draw() {
@@ -246,6 +474,13 @@ function draw() {
     ctx.strokeStyle = '#000';
     ctx.lineWidth = 2;
     connections.forEach(conn => {
+        // Use dashed lines for connections involving littlebit points
+        if (conn.p1.type === 'littlebit' || conn.p2.type === 'littlebit') {
+            ctx.setLineDash([5, 5]);
+        } else {
+            ctx.setLineDash([]);
+        }
+        
         ctx.beginPath();
         ctx.moveTo(conn.p1.x * canvas.width / mapImage.width, 
                   conn.p1.y * canvas.height / mapImage.height);
@@ -253,13 +488,21 @@ function draw() {
                   conn.p2.y * canvas.height / mapImage.height);
         ctx.stroke();
     });
+    ctx.setLineDash([]); // Reset dash pattern
 
     // Draw points and labels
     points.forEach(point => {
         ctx.fillStyle = getColorForPointType(point.type);
         ctx.beginPath();
-        ctx.arc(point.x * canvas.width / mapImage.width, 
-               point.y * canvas.height / mapImage.height, 10, 0, 2 * Math.PI);
+        
+        if (point.type === 'littlebit') {
+            // Draw littlebit points as smaller circles
+            ctx.arc(point.x * canvas.width / mapImage.width, 
+                   point.y * canvas.height / mapImage.height, 7, 0, 2 * Math.PI);
+        } else {
+            ctx.arc(point.x * canvas.width / mapImage.width, 
+                   point.y * canvas.height / mapImage.height, 10, 0, 2 * Math.PI);
+        }
         ctx.fill();
 
         // Draw labels for start points and destinations
@@ -274,15 +517,6 @@ function draw() {
             );
         }
     });
-}
-
-function getColorForPointType(type) {
-    switch (type) {
-        case 'start': return '#00ff00';
-        case 'destination': return '#0000ff';
-        case 'path': return '#ff0000';
-        default: return '#ff0000';
-    }
 }
 
 undoBtn.addEventListener('click', undo);
@@ -320,3 +554,4 @@ exportBtn.addEventListener('click', function() {
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
 });
+

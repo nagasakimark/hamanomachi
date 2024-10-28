@@ -50,16 +50,6 @@
       "type": "normal"
     },
     {
-      "x": 506,
-      "y": 771,
-      "type": "normal"
-    },
-    {
-      "x": 460,
-      "y": 771,
-      "type": "normal"
-    },
-    {
       "x": 530,
       "y": 460,
       "type": "normal"
@@ -90,58 +80,13 @@
       "type": "normal"
     },
     {
-      "x": 308,
-      "y": 309,
-      "type": "normal"
-    },
-    {
-      "x": 255,
-      "y": 653,
-      "type": "normal"
-    },
-    {
-      "x": 313,
-      "y": 777,
-      "type": "normal"
-    },
-    {
-      "x": 727,
-      "y": 804,
-      "type": "normal"
-    },
-    {
       "x": 733,
       "y": 532,
       "type": "normal"
     },
     {
-      "x": 744,
-      "y": 450,
-      "type": "normal"
-    },
-    {
-      "x": 756,
-      "y": 386,
-      "type": "normal"
-    },
-    {
       "x": 785,
       "y": 303,
-      "type": "normal"
-    },
-    {
-      "x": 839,
-      "y": 159,
-      "type": "normal"
-    },
-    {
-      "x": 1195,
-      "y": 417,
-      "type": "normal"
-    },
-    {
-      "x": 1433,
-      "y": 399,
       "type": "normal"
     },
     {
@@ -160,26 +105,6 @@
       "type": "normal"
     },
     {
-      "x": 888,
-      "y": 554,
-      "type": "normal"
-    },
-    {
-      "x": 790,
-      "y": 538,
-      "type": "normal"
-    },
-    {
-      "x": 881,
-      "y": 752,
-      "type": "normal"
-    },
-    {
-      "x": 949,
-      "y": 749,
-      "type": "normal"
-    },
-    {
       "x": 1076,
       "y": 745,
       "type": "normal"
@@ -187,11 +112,6 @@
     {
       "x": 1199,
       "y": 739,
-      "type": "normal"
-    },
-    {
-      "x": 1313,
-      "y": 733,
       "type": "normal"
     },
     {
@@ -215,18 +135,8 @@
       "type": "normal"
     },
     {
-      "x": 1551,
-      "y": 298,
-      "type": "normal"
-    },
-    {
       "x": 1434,
       "y": 300,
-      "type": "normal"
-    },
-    {
-      "x": 1434,
-      "y": 432,
       "type": "normal"
     },
     {
@@ -294,12 +204,6 @@
       "name": "chawanmushi restaurant"
     },
     {
-      "x": 887,
-      "y": 520,
-      "type": "destination",
-      "name": "supermarket"
-    },
-    {
       "x": 719,
       "y": 443,
       "type": "destination",
@@ -324,12 +228,6 @@
       "name": "ramen restaurant"
     },
     {
-      "x": 1466,
-      "y": 401,
-      "type": "destination",
-      "name": "hospital"
-    },
-    {
       "x": 1549,
       "y": 267,
       "type": "destination",
@@ -351,43 +249,303 @@
       "x": 727,
       "y": 1025,
       "type": "normal"
+    },
+    {
+      "x": 1202,
+      "y": 830,
+      "type": "littlebit"
+    },
+    {
+      "x": 1077,
+      "y": 829,
+      "type": "littlebit"
+    },
+    {
+      "x": 1145,
+      "y": 915,
+      "type": "littlebit"
+    },
+    {
+      "x": 919,
+      "y": 934,
+      "type": "littlebit"
+    },
+    {
+      "x": 909,
+      "y": 1013,
+      "type": "littlebit"
+    },
+    {
+      "x": 1426,
+      "y": 663,
+      "type": "littlebit"
+    },
+    {
+      "x": 1430,
+      "y": 517,
+      "type": "littlebit"
+    },
+    {
+      "x": 1352,
+      "y": 435,
+      "type": "littlebit"
+    },
+    {
+      "x": 1336,
+      "y": 591,
+      "type": "littlebit"
+    },
+    {
+      "x": 1253,
+      "y": 521,
+      "type": "littlebit"
+    },
+    {
+      "x": 1361,
+      "y": 278,
+      "type": "littlebit"
+    },
+    {
+      "x": 758,
+      "y": 77,
+      "type": "littlebit"
+    },
+    {
+      "x": 639,
+      "y": 154,
+      "type": "littlebit"
+    },
+    {
+      "x": 482,
+      "y": 225,
+      "type": "littlebit"
+    },
+    {
+      "x": 691,
+      "y": 279,
+      "type": "littlebit"
+    },
+    {
+      "x": 310,
+      "y": 310,
+      "type": "littlebit"
+    },
+    {
+      "x": 258,
+      "y": 657,
+      "type": "littlebit"
+    },
+    {
+      "x": 316,
+      "y": 774,
+      "type": "littlebit"
+    },
+    {
+      "x": 725,
+      "y": 807,
+      "type": "littlebit"
+    },
+    {
+      "x": 895,
+      "y": 750,
+      "type": "littlebit"
+    },
+    {
+      "x": 938,
+      "y": 749,
+      "type": "littlebit"
+    },
+    {
+      "x": 1301,
+      "y": 729,
+      "type": "littlebit"
+    },
+    {
+      "x": 1328,
+      "y": 731,
+      "type": "littlebit"
+    },
+    {
+      "x": 1437,
+      "y": 403,
+      "type": "littlebit"
+    },
+    {
+      "x": 1182,
+      "y": 416,
+      "type": "littlebit"
+    },
+    {
+      "x": 840,
+      "y": 149,
+      "type": "littlebit"
+    },
+    {
+      "x": 837,
+      "y": 166,
+      "type": "littlebit"
+    },
+    {
+      "x": 788,
+      "y": 540,
+      "type": "littlebit"
+    },
+    {
+      "x": 887,
+      "y": 555,
+      "type": "littlebit"
+    },
+    {
+      "x": 727,
+      "y": 654,
+      "type": "littlebit"
+    },
+    {
+      "x": 611,
+      "y": 766,
+      "type": "littlebit"
+    },
+    {
+      "x": 502,
+      "y": 861,
+      "type": "littlebit"
+    },
+    {
+      "x": 620,
+      "y": 948,
+      "type": "littlebit"
+    },
+    {
+      "x": 498,
+      "y": 978,
+      "type": "littlebit"
+    },
+    {
+      "x": 730,
+      "y": 986,
+      "type": "littlebit"
+    },
+    {
+      "x": 1089,
+      "y": 962,
+      "type": "littlebit"
+    },
+    {
+      "x": 1325,
+      "y": 936,
+      "type": "littlebit"
+    },
+    {
+      "x": 597,
+      "y": 1021,
+      "type": "littlebit"
+    },
+    {
+      "x": 375,
+      "y": 1014,
+      "type": "littlebit"
+    },
+    {
+      "x": 260,
+      "y": 878,
+      "type": "littlebit"
+    },
+    {
+      "x": 1090,
+      "y": 190,
+      "type": "littlebit"
+    },
+    {
+      "x": 1424,
+      "y": 813,
+      "type": "littlebit"
+    },
+    {
+      "x": 1293,
+      "y": 355,
+      "type": "littlebit"
+    },
+    {
+      "x": 622,
+      "y": 493,
+      "type": "littlebit"
+    },
+    {
+      "x": 379,
+      "y": 409,
+      "type": "littlebit"
+    },
+    {
+      "x": 494,
+      "y": 620,
+      "type": "littlebit"
+    },
+    {
+      "x": 569,
+      "y": 354,
+      "type": "littlebit"
+    },
+    {
+      "x": 745,
+      "y": 447,
+      "type": "littlebit"
+    },
+    {
+      "x": 760,
+      "y": 389,
+      "type": "littlebit"
+    },
+    {
+      "x": 1213,
+      "y": 424,
+      "type": "littlebit"
+    },
+    {
+      "x": 1139,
+      "y": 742,
+      "type": "littlebit"
+    },
+    {
+      "x": 1162,
+      "y": 975,
+      "type": "littlebit"
+    },
+    {
+      "x": 886,
+      "y": 523,
+      "type": "destination",
+      "name": "supermarket"
+    },
+    {
+      "x": 483,
+      "y": 768,
+      "type": "normal"
+    },
+    {
+      "x": 1548,
+      "y": 297,
+      "type": "littlebit"
+    },
+    {
+      "x": 1578,
+      "y": 299,
+      "type": "normal"
+    },
+    {
+      "x": 1466,
+      "y": 401,
+      "type": "destination",
+      "name": "hospital"
+    },
+    {
+      "x": 1434,
+      "y": 432,
+      "type": "normal"
     }
   ],
   "connections": [
     {
       "p1": {
-        "x": 266,
-        "y": 1011,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 496,
-        "y": 1017,
-        "type": "start",
-        "id": "start2",
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 496,
-        "y": 1017,
-        "type": "start",
-        "id": "start2",
-        "name": null
-      },
-      "p2": {
-        "x": 727,
-        "y": 1025,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
         "x": 727,
         "y": 1025,
         "type": "normal",
@@ -399,70 +557,6 @@
         "y": 1022,
         "type": "start",
         "id": "start3",
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 802,
-        "y": 1022,
-        "type": "start",
-        "id": "start3",
-        "name": null
-      },
-      "p2": {
-        "x": 1097,
-        "y": 996,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1097,
-        "y": 996,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1212,
-        "y": 959,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1212,
-        "y": 959,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1425,
-        "y": 915,
-        "type": "start",
-        "id": "start4",
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 266,
-        "y": 1011,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 255,
-        "y": 777,
-        "type": "normal",
-        "id": null,
         "name": null
       }
     },
@@ -484,1094 +578,6 @@
     },
     {
       "p1": {
-        "x": 255,
-        "y": 777,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 255,
-        "y": 653,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 255,
-        "y": 653,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 285,
-        "y": 660,
-        "type": "destination",
-        "id": null,
-        "name": "bookstore"
-      }
-    },
-    {
-      "p1": {
-        "x": 255,
-        "y": 653,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 286,
-        "y": 378,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 286,
-        "y": 378,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 308,
-        "y": 309,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 308,
-        "y": 309,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 339,
-        "y": 312,
-        "type": "destination",
-        "id": null,
-        "name": "soba restaurant"
-      }
-    },
-    {
-      "p1": {
-        "x": 308,
-        "y": 309,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 354,
-        "y": 192,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 354,
-        "y": 192,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 604,
-        "y": 257,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 604,
-        "y": 257,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 676,
-        "y": 48,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 676,
-        "y": 48,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 854,
-        "y": 111,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 854,
-        "y": 111,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 839,
-        "y": 159,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 839,
-        "y": 159,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 805,
-        "y": 152,
-        "type": "destination",
-        "id": null,
-        "name": "tonkatsu restaurant"
-      }
-    },
-    {
-      "p1": {
-        "x": 839,
-        "y": 159,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 880,
-        "y": 150,
-        "type": "destination",
-        "id": null,
-        "name": "convenience store 7/11"
-      }
-    },
-    {
-      "p1": {
-        "x": 839,
-        "y": 159,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 785,
-        "y": 303,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 785,
-        "y": 303,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 604,
-        "y": 257,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 604,
-        "y": 257,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 530,
-        "y": 460,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 530,
-        "y": 460,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 286,
-        "y": 378,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 530,
-        "y": 460,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 460,
-        "y": 771,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 460,
-        "y": 771,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 313,
-        "y": 777,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 313,
-        "y": 777,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 315,
-        "y": 743,
-        "type": "destination",
-        "id": null,
-        "name": "udon restaurant"
-      }
-    },
-    {
-      "p1": {
-        "x": 313,
-        "y": 777,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 255,
-        "y": 777,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 460,
-        "y": 771,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 506,
-        "y": 771,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 506,
-        "y": 771,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 499,
-        "y": 947,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 499,
-        "y": 947,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 496,
-        "y": 1017,
-        "type": "start",
-        "id": "start2",
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 499,
-        "y": 947,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 733,
-        "y": 949,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 733,
-        "y": 949,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 727,
-        "y": 1025,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 733,
-        "y": 949,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 727,
-        "y": 804,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 727,
-        "y": 804,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 759,
-        "y": 803,
-        "type": "destination",
-        "id": null,
-        "name": "fast food restaurant"
-      }
-    },
-    {
-      "p1": {
-        "x": 727,
-        "y": 804,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 722,
-        "y": 760,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 722,
-        "y": 760,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 733,
-        "y": 532,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 722,
-        "y": 760,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 506,
-        "y": 771,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 530,
-        "y": 460,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 733,
-        "y": 532,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 733,
-        "y": 532,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 744,
-        "y": 450,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 744,
-        "y": 450,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 719,
-        "y": 443,
-        "type": "destination",
-        "id": null,
-        "name": "castella shop"
-      }
-    },
-    {
-      "p1": {
-        "x": 744,
-        "y": 450,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 756,
-        "y": 386,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 756,
-        "y": 386,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 793,
-        "y": 389,
-        "type": "destination",
-        "id": null,
-        "name": "flower shop"
-      }
-    },
-    {
-      "p1": {
-        "x": 756,
-        "y": 386,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 785,
-        "y": 303,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 785,
-        "y": 303,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1195,
-        "y": 417,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1195,
-        "y": 417,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1183,
-        "y": 380,
-        "type": "destination",
-        "id": null,
-        "name": "post office"
-      }
-    },
-    {
-      "p1": {
-        "x": 1195,
-        "y": 417,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1214,
-        "y": 450,
-        "type": "destination",
-        "id": null,
-        "name": "ramen restaurant"
-      }
-    },
-    {
-      "p1": {
-        "x": 1195,
-        "y": 417,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1278,
-        "y": 438,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1278,
-        "y": 438,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1310,
-        "y": 263,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1310,
-        "y": 263,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 854,
-        "y": 111,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1310,
-        "y": 263,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1434,
-        "y": 300,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1434,
-        "y": 300,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1551,
-        "y": 298,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1551,
-        "y": 298,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1549,
-        "y": 267,
-        "type": "destination",
-        "id": null,
-        "name": "temple"
-      }
-    },
-    {
-      "p1": {
-        "x": 1434,
-        "y": 300,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1433,
-        "y": 399,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1433,
-        "y": 399,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1434,
-        "y": 432,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1434,
-        "y": 432,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1278,
-        "y": 438,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1278,
-        "y": 438,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1234,
-        "y": 585,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1234,
-        "y": 585,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 888,
-        "y": 554,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 888,
-        "y": 554,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 887,
-        "y": 520,
-        "type": "destination",
-        "id": null,
-        "name": "supermarket"
-      }
-    },
-    {
-      "p1": {
-        "x": 888,
-        "y": 554,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 790,
-        "y": 538,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 790,
-        "y": 538,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 787,
-        "y": 567,
-        "type": "destination",
-        "id": null,
-        "name": "chawanmushi restaurant"
-      }
-    },
-    {
-      "p1": {
-        "x": 790,
-        "y": 538,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 733,
-        "y": 532,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 722,
-        "y": 760,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 881,
-        "y": 752,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 881,
-        "y": 752,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 890,
-        "y": 789,
-        "type": "destination",
-        "id": null,
-        "name": "police station"
-      }
-    },
-    {
-      "p1": {
-        "x": 881,
-        "y": 752,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 949,
-        "y": 749,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 949,
-        "y": 749,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 944,
-        "y": 780,
-        "type": "destination",
-        "id": null,
-        "name": "department store"
-      }
-    },
-    {
-      "p1": {
-        "x": 949,
-        "y": 749,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1076,
-        "y": 745,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1076,
-        "y": 745,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1199,
-        "y": 739,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1199,
-        "y": 739,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1313,
-        "y": 733,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1313,
-        "y": 733,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1301,
-        "y": 690,
-        "type": "destination",
-        "id": null,
-        "name": "ice cream shop"
-      }
-    },
-    {
-      "p1": {
-        "x": 1313,
-        "y": 733,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1333,
-        "y": 771,
-        "type": "destination",
-        "id": null,
-        "name": "convenience store lawson"
-      }
-    },
-    {
-      "p1": {
-        "x": 1313,
-        "y": 733,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1424,
-        "y": 737,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1424,
-        "y": 737,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1427,
-        "y": 596,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1427,
-        "y": 596,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1234,
-        "y": 585,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1427,
-        "y": 596,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1434,
-        "y": 432,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1424,
-        "y": 737,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1425,
-        "y": 915,
-        "type": "start",
-        "id": "start4",
-        "name": null
-      }
-    },
-    {
-      "p1": {
         "x": 1212,
         "y": 959,
         "type": "normal",
@@ -1588,9 +594,1481 @@
     },
     {
       "p1": {
+        "x": 1234,
+        "y": 585,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1199,
+        "y": 739,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1310,
+        "y": 263,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1367,
+        "y": 280,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1367,
+        "y": 280,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1434,
+        "y": 300,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1077,
+        "y": 185,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 854,
+        "y": 111,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
         "x": 1205,
         "y": 909,
         "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1202,
+        "y": 830,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1202,
+        "y": 830,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1199,
+        "y": 739,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1079,
+        "y": 921,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1077,
+        "y": 829,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1077,
+        "y": 829,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1076,
+        "y": 745,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1079,
+        "y": 921,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1145,
+        "y": 915,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1145,
+        "y": 915,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1205,
+        "y": 909,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1079,
+        "y": 921,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 919,
+        "y": 934,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 919,
+        "y": 934,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 733,
+        "y": 949,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 802,
+        "y": 1022,
+        "type": "start",
+        "id": "start3",
+        "name": null
+      },
+      "p2": {
+        "x": 909,
+        "y": 1013,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 909,
+        "y": 1013,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1097,
+        "y": 996,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1424,
+        "y": 737,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1426,
+        "y": 663,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1426,
+        "y": 663,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1427,
+        "y": 596,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1427,
+        "y": 596,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1430,
+        "y": 517,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1352,
+        "y": 435,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1278,
+        "y": 438,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1427,
+        "y": 596,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1336,
+        "y": 591,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1336,
+        "y": 591,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1234,
+        "y": 585,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1278,
+        "y": 438,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1253,
+        "y": 521,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1253,
+        "y": 521,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1234,
+        "y": 585,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1310,
+        "y": 263,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1361,
+        "y": 278,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1361,
+        "y": 278,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1434,
+        "y": 300,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 676,
+        "y": 48,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 758,
+        "y": 77,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 758,
+        "y": 77,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 854,
+        "y": 111,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 604,
+        "y": 257,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 639,
+        "y": 154,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 639,
+        "y": 154,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 676,
+        "y": 48,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 354,
+        "y": 192,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 482,
+        "y": 225,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 482,
+        "y": 225,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 604,
+        "y": 257,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 785,
+        "y": 303,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 691,
+        "y": 279,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 691,
+        "y": 279,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 604,
+        "y": 257,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 722,
+        "y": 760,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 727,
+        "y": 654,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 727,
+        "y": 654,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 733,
+        "y": 532,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 722,
+        "y": 760,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 611,
+        "y": 766,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 502,
+        "y": 861,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 499,
+        "y": 947,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 499,
+        "y": 947,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 620,
+        "y": 948,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 620,
+        "y": 948,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 733,
+        "y": 949,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 499,
+        "y": 947,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 498,
+        "y": 978,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 498,
+        "y": 978,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 496,
+        "y": 1017,
+        "type": "start",
+        "id": "start2",
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 733,
+        "y": 949,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 730,
+        "y": 986,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 730,
+        "y": 986,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 727,
+        "y": 1025,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1097,
+        "y": 996,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1089,
+        "y": 962,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1089,
+        "y": 962,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1079,
+        "y": 921,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1212,
+        "y": 959,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1325,
+        "y": 936,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1325,
+        "y": 936,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1425,
+        "y": 915,
+        "type": "start",
+        "id": "start4",
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 496,
+        "y": 1017,
+        "type": "start",
+        "id": "start2",
+        "name": null
+      },
+      "p2": {
+        "x": 597,
+        "y": 1021,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 597,
+        "y": 1021,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 727,
+        "y": 1025,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 266,
+        "y": 1011,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 375,
+        "y": 1014,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 375,
+        "y": 1014,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 496,
+        "y": 1017,
+        "type": "start",
+        "id": "start2",
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 266,
+        "y": 1011,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 260,
+        "y": 878,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 260,
+        "y": 878,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 255,
+        "y": 777,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1310,
+        "y": 263,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1090,
+        "y": 190,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1090,
+        "y": 190,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 854,
+        "y": 111,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1424,
+        "y": 737,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1424,
+        "y": 813,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1424,
+        "y": 813,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1425,
+        "y": 915,
+        "type": "start",
+        "id": "start4",
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1278,
+        "y": 438,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1293,
+        "y": 355,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1293,
+        "y": 355,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1310,
+        "y": 263,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 530,
+        "y": 460,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 622,
+        "y": 493,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 622,
+        "y": 493,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 733,
+        "y": 532,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 530,
+        "y": 460,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 379,
+        "y": 409,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 379,
+        "y": 409,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 286,
+        "y": 378,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 530,
+        "y": 460,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 494,
+        "y": 620,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 604,
+        "y": 257,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 569,
+        "y": 354,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 569,
+        "y": 354,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 530,
+        "y": 460,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 733,
+        "y": 949,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 725,
+        "y": 807,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 725,
+        "y": 807,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 722,
+        "y": 760,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 722,
+        "y": 760,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 895,
+        "y": 750,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 895,
+        "y": 750,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 938,
+        "y": 749,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 938,
+        "y": 749,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1076,
+        "y": 745,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1234,
+        "y": 585,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 887,
+        "y": 555,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 887,
+        "y": 555,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 788,
+        "y": 540,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 788,
+        "y": 540,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 733,
+        "y": 532,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 733,
+        "y": 532,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 745,
+        "y": 447,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 745,
+        "y": 447,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 760,
+        "y": 389,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 760,
+        "y": 389,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 785,
+        "y": 303,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 354,
+        "y": 192,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 310,
+        "y": 310,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 310,
+        "y": 310,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 286,
+        "y": 378,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 286,
+        "y": 378,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 258,
+        "y": 657,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 258,
+        "y": 657,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 255,
+        "y": 777,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 255,
+        "y": 777,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 316,
+        "y": 774,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1199,
+        "y": 739,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1301,
+        "y": 729,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1301,
+        "y": 729,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1328,
+        "y": 731,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1328,
+        "y": 731,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1424,
+        "y": 737,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1437,
+        "y": 403,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1434,
+        "y": 300,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 854,
+        "y": 111,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 840,
+        "y": 149,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 840,
+        "y": 149,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 837,
+        "y": 166,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 837,
+        "y": 166,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 785,
+        "y": 303,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 785,
+        "y": 303,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1182,
+        "y": 416,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1182,
+        "y": 416,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1213,
+        "y": 424,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1213,
+        "y": 424,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1278,
+        "y": 438,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1076,
+        "y": 745,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1139,
+        "y": 742,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1139,
+        "y": 742,
+        "type": "littlebit",
         "id": null,
         "name": null
       },
@@ -1611,8 +2089,24 @@
         "name": null
       },
       "p2": {
-        "x": 1079,
-        "y": 921,
+        "x": 1162,
+        "y": 975,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1162,
+        "y": 975,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1212,
+        "y": 959,
         "type": "normal",
         "id": null,
         "name": null
@@ -1620,63 +2114,351 @@
     },
     {
       "p1": {
-        "x": 1079,
-        "y": 921,
+        "x": 1213,
+        "y": 424,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1214,
+        "y": 450,
+        "type": "destination",
+        "id": null,
+        "name": "ramen restaurant"
+      }
+    },
+    {
+      "p1": {
+        "x": 1182,
+        "y": 416,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1183,
+        "y": 380,
+        "type": "destination",
+        "id": null,
+        "name": "post office"
+      }
+    },
+    {
+      "p1": {
+        "x": 837,
+        "y": 166,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 805,
+        "y": 152,
+        "type": "destination",
+        "id": null,
+        "name": "tonkatsu restaurant"
+      }
+    },
+    {
+      "p1": {
+        "x": 840,
+        "y": 149,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 880,
+        "y": 150,
+        "type": "destination",
+        "id": null,
+        "name": "convenience store 7/11"
+      }
+    },
+    {
+      "p1": {
+        "x": 310,
+        "y": 310,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 339,
+        "y": 312,
+        "type": "destination",
+        "id": null,
+        "name": "soba restaurant"
+      }
+    },
+    {
+      "p1": {
+        "x": 745,
+        "y": 447,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 719,
+        "y": 443,
+        "type": "destination",
+        "id": null,
+        "name": "castella shop"
+      }
+    },
+    {
+      "p1": {
+        "x": 760,
+        "y": 389,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 793,
+        "y": 389,
+        "type": "destination",
+        "id": null,
+        "name": "flower shop"
+      }
+    },
+    {
+      "p1": {
+        "x": 788,
+        "y": 540,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 787,
+        "y": 567,
+        "type": "destination",
+        "id": null,
+        "name": "chawanmushi restaurant"
+      }
+    },
+    {
+      "p1": {
+        "x": 1328,
+        "y": 731,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1333,
+        "y": 771,
+        "type": "destination",
+        "id": null,
+        "name": "convenience store lawson"
+      }
+    },
+    {
+      "p1": {
+        "x": 1301,
+        "y": 729,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1301,
+        "y": 690,
+        "type": "destination",
+        "id": null,
+        "name": "ice cream shop"
+      }
+    },
+    {
+      "p1": {
+        "x": 938,
+        "y": 749,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 944,
+        "y": 780,
+        "type": "destination",
+        "id": null,
+        "name": "department store"
+      }
+    },
+    {
+      "p1": {
+        "x": 895,
+        "y": 750,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 890,
+        "y": 789,
+        "type": "destination",
+        "id": null,
+        "name": "police station"
+      }
+    },
+    {
+      "p1": {
+        "x": 759,
+        "y": 803,
+        "type": "destination",
+        "id": null,
+        "name": "fast food restaurant"
+      },
+      "p2": {
+        "x": 725,
+        "y": 807,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 316,
+        "y": 774,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 315,
+        "y": 743,
+        "type": "destination",
+        "id": null,
+        "name": "udon restaurant"
+      }
+    },
+    {
+      "p1": {
+        "x": 258,
+        "y": 657,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 285,
+        "y": 660,
+        "type": "destination",
+        "id": null,
+        "name": "bookstore"
+      }
+    },
+    {
+      "p1": {
+        "x": 887,
+        "y": 555,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 886,
+        "y": 523,
+        "type": "destination",
+        "id": null,
+        "name": "supermarket"
+      }
+    },
+    {
+      "p1": {
+        "x": 502,
+        "y": 861,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 483,
+        "y": 768,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 611,
+        "y": 766,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 483,
+        "y": 768,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 483,
+        "y": 768,
         "type": "normal",
         "id": null,
         "name": null
       },
       "p2": {
-        "x": 1076,
-        "y": 745,
-        "type": "normal",
+        "x": 494,
+        "y": 620,
+        "type": "littlebit",
         "id": null,
         "name": null
       }
     },
     {
       "p1": {
-        "x": 1079,
-        "y": 921,
+        "x": 483,
+        "y": 768,
         "type": "normal",
         "id": null,
         "name": null
       },
       "p2": {
-        "x": 733,
-        "y": 949,
-        "type": "normal",
+        "x": 316,
+        "y": 774,
+        "type": "littlebit",
         "id": null,
         "name": null
       }
     },
     {
       "p1": {
-        "x": 1234,
-        "y": 585,
+        "x": 1434,
+        "y": 300,
         "type": "normal",
         "id": null,
         "name": null
       },
       "p2": {
-        "x": 1199,
-        "y": 739,
-        "type": "normal",
+        "x": 1548,
+        "y": 297,
+        "type": "littlebit",
         "id": null,
         "name": null
       }
     },
     {
       "p1": {
-        "x": 1079,
-        "y": 921,
-        "type": "normal",
+        "x": 1548,
+        "y": 297,
+        "type": "littlebit",
         "id": null,
         "name": null
       },
       "p2": {
-        "x": 1205,
-        "y": 909,
+        "x": 1578,
+        "y": 299,
         "type": "normal",
         "id": null,
         "name": null
@@ -1684,9 +2466,25 @@
     },
     {
       "p1": {
-        "x": 1433,
-        "y": 399,
-        "type": "normal",
+        "x": 1548,
+        "y": 297,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1549,
+        "y": 267,
+        "type": "destination",
+        "id": null,
+        "name": "temple"
+      }
+    },
+    {
+      "p1": {
+        "x": 1437,
+        "y": 403,
+        "type": "littlebit",
         "id": null,
         "name": null
       },
@@ -1696,6 +2494,54 @@
         "type": "destination",
         "id": null,
         "name": "hospital"
+      }
+    },
+    {
+      "p1": {
+        "x": 1430,
+        "y": 517,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1434,
+        "y": 432,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1434,
+        "y": 432,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1352,
+        "y": 435,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1434,
+        "y": 432,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1437,
+        "y": 403,
+        "type": "littlebit",
+        "id": null,
+        "name": null
       }
     }
   ]

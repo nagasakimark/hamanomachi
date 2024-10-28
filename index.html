@@ -27,7 +27,7 @@
             display: flex;
             gap: 20px;
             width: 95vw;
-            height: 95vh;
+            height: 95%;
         }
 
         .canvas-container {
@@ -121,9 +121,9 @@
         .destination-text {
             position: absolute;
             top: 10%;
-            left: 13%;
+            left: 19%;
 			
-            width: 45%;
+            width: 39%;
             color: #ff4081;
             font-weight: bold;
             font-size: 20px;
@@ -188,7 +188,7 @@
 			display: none; /* Hidden initially */
 			z-index: 9999; /* Make sure it’s on top */
 		}
-		        #qrCodeButton {
+		  #qrCodeButton {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -243,6 +243,18 @@
             max-height: calc(90vh - 60px);
             display: block;
         }
+		#littleBitBtn { 
+		background: linear-gradient(45deg, #F7A602, #FDCF58); 
+		color: white; 
+		}
+		#diagonalLeftBtn { background: linear-gradient(45deg, #00bcd4, #80deea); color: white; }
+		#diagonalRightBtn { background: linear-gradient(45deg, #f44336, #ef9a9a); color: white; }
+
+		.button-group {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		}
 
     </style>
 </head>
@@ -262,11 +274,20 @@
             <button id="straightBtn" class="straight-container">
                 Go Straight for <input type="number" id="blockCount" value="1" min="1" max="5" class="block-input"> blocks
             </button>
-            <div class="button-row">
+			    <button id="littleBitBtn" onclick="moveLittleBit()">
+				Go straight for a little bit
+			</button>
+            <div class="button-row ">
                 <button id="leftBtn" class="half-width">Turn Left</button>
                 <button id="rightBtn" class="half-width">Turn Right</button>
-            </div>
-            <button id="goBackBtn">Go Back</button>
+			</div>
+			<div class="button-row mt-2">
+				<button id="diagonalLeftBtn" class="half-width">It's on your left</button>
+				<button id="diagonalRightBtn" class="half-width">It's on your right</button>
+			</div>
+	
+            
+            <button id="goBackBtn" hidden>Go Back</button>
             <button id="turnAroundBtn">Turn Around</button>
             
             <!-- Updated settings section -->
@@ -545,45 +566,51 @@ function calculateShortestTurn(currentAngle, targetAngle) {
 
 function canMoveStraightFor(blocks) {
     if (blocks <= 0) return false;
-    
     let currentPos = { ...currentPlayerPosition };
     let currentAngle = playerAngle;
     let remainingBlocks = blocks;
     let path = [currentPos];
+    
+    // Special case for starting from incorrect destination
+    const isStartingFromDestination = isOnIncorrectDestination();
     
     while (remainingBlocks > 0) {
         let connections = mapData.connections.filter(conn => 
             arePointsEqual(conn.p1, currentPos) ||
             arePointsEqual(conn.p2, currentPos)
         );
-        
         let bestConnection = null;
-        let smallestAngleDiff = Math.PI / 9; // ~20 degrees
+        let smallestAngleDiff = isStartingFromDestination ? Math.PI : Math.PI / 9; // More lenient if starting from destination
         let bestNextAngle = null;
         
         for (const connection of connections) {
             const nextPos = arePointsEqual(connection.p1, currentPos) ? 
                 connection.p2 : connection.p1;
-            
             const dx = nextPos.x - currentPos.x;
             const dy = nextPos.y - currentPos.y;
             const connectionAngle = Math.atan2(dy, dx);
-            
             let angleDiff = Math.abs(normalizeAngle(connectionAngle - currentAngle));
             
-            // For the first move, be strict about the angle
-            if (remainingBlocks === blocks && angleDiff > Math.PI / 9) {
-                continue;
-            }
-            // For subsequent moves, be slightly more lenient but still stricter than before
-            else if (remainingBlocks < blocks && angleDiff > Math.PI / 6) {
-                continue;
-            }
-            
-            if (angleDiff < smallestAngleDiff) {
-                smallestAngleDiff = angleDiff;
-                bestConnection = connection;
-                bestNextAngle = connectionAngle;
+            // Be more lenient on the first move if starting from destination
+            if (remainingBlocks === blocks && isStartingFromDestination) {
+                if (angleDiff < smallestAngleDiff) {
+                    smallestAngleDiff = angleDiff;
+                    bestConnection = connection;
+                    bestNextAngle = connectionAngle;
+                }
+            } else {
+                // Normal angle checking for other cases
+                if (remainingBlocks === blocks && angleDiff > Math.PI / 9) {
+                    continue;
+                } 
+                else if (remainingBlocks < blocks && angleDiff > Math.PI / 6) {
+                    continue;
+                }
+                if (angleDiff < smallestAngleDiff) {
+                    smallestAngleDiff = angleDiff;
+                    bestConnection = connection;
+                    bestNextAngle = connectionAngle;
+                }
             }
         }
         
@@ -597,43 +624,18 @@ function canMoveStraightFor(blocks) {
         
         const nextPos = arePointsEqual(bestConnection.p1, currentPos) ? 
             bestConnection.p2 : bestConnection.p1;
-            
-        // Check if this next point connects to any destinations
-        const destinationConnections = mapData.connections.filter(conn => {
-            if (arePointsEqual(conn.p1, nextPos) || arePointsEqual(conn.p2, nextPos)) {
-                const otherPoint = arePointsEqual(conn.p1, nextPos) ? conn.p2 : conn.p1;
-                const mapPoint = mapData.points.find(p => arePointsEqual(p, otherPoint));
-                return mapPoint && mapPoint.type === 'destination';
-            }
-            return false;
-        });
-        
-        // Check if it connects to both goal and non-goal destinations
-        const connectsToGoal = destinationConnections.some(conn => {
-            const otherPoint = arePointsEqual(conn.p1, nextPos) ? conn.p2 : conn.p1;
-            return arePointsEqual(otherPoint, destination);
-        });
-        
-        const connectsToNonGoal = destinationConnections.some(conn => {
-            const otherPoint = arePointsEqual(conn.p1, nextPos) ? conn.p2 : conn.p1;
-            return !arePointsEqual(otherPoint, destination);
-        });
-        
-        // Add the point to our path
         path.push(nextPos);
         
-        // Only skip decrementing if it connects to a non-goal destination but NOT to the goal
-        if (!(connectsToNonGoal && !connectsToGoal)) {
+        // Only decrement remaining blocks if it's not a littlebit point
+        const nextPoint = mapData.points.find(p => arePointsEqual(p, nextPos));
+        if (!nextPoint || nextPoint.type !== 'littlebit') {
             remainingBlocks--;
         }
         
-        // Update current position for next iteration
         currentPos = { ...nextPos };
         currentAngle = bestNextAngle;
         
-        // Check if we've reached our goal destination
         if (arePointsEqual(nextPos, destination)) {
-            // If we still have remaining blocks, that's not valid
             if (remainingBlocks > 1) {
                 return {
                     possible: false,
@@ -651,6 +653,120 @@ function canMoveStraightFor(blocks) {
         finalAngle: currentAngle
     };
 }
+
+
+function canMoveLittleBitFor(blocks) {
+    if (blocks <= 0) return false;
+
+    let currentPos = { ...currentPlayerPosition };
+    let currentAngle = playerAngle;
+    let path = [currentPos];
+
+    const normalPathCheck = canMoveStraightFor(blocks);
+    if (!normalPathCheck.possible || normalPathCheck.path.length < 2) {
+        return {
+            possible: false,
+            reason: "No valid forward path",
+            validBlocks: 0
+        };
+    }
+
+    // Get all points along the approximately straight path until we hit a normal/destination/start point
+    let straightLinePath = [];
+    let currentPathPoint = currentPos;
+    let foundEndPoint = false;
+    let maxIterations = 10;
+    let iterations = 0;
+
+    while (!foundEndPoint && iterations < maxIterations) {
+        iterations++;
+        
+        const nextPoints = mapData.points.filter(point => {
+            if (arePointsEqual(point, currentPathPoint)) return false;
+            
+            const connected = mapData.connections.some(conn => 
+                (arePointsEqual(conn.p1, currentPathPoint) && arePointsEqual(conn.p2, point)) ||
+                (arePointsEqual(conn.p2, currentPathPoint) && arePointsEqual(conn.p1, point))
+            );
+            
+            if (!connected) return false;
+
+            const dx = point.x - currentPathPoint.x;
+            const dy = point.y - currentPathPoint.y;
+            const pointAngle = Math.atan2(dy, dx);
+            const targetAngle = Math.atan2(
+                normalPathCheck.path[1].y - currentPos.y,
+                normalPathCheck.path[1].x - currentPos.x
+            );
+            const angleDiff = Math.abs(normalizeAngle(pointAngle - targetAngle));
+            
+            return angleDiff <= Math.PI / 9;
+        });
+
+        if (nextPoints.length === 0) break;
+
+        const sortedPoints = nextPoints.sort((a, b) => {
+            const distA = Math.sqrt(Math.pow(a.x - currentPathPoint.x, 2) + Math.pow(a.y - currentPathPoint.y, 2));
+            const distB = Math.sqrt(Math.pow(b.x - currentPathPoint.x, 2) + Math.pow(b.y - currentPathPoint.y, 2));
+            return distA - distB;
+        });
+
+        const nextPoint = sortedPoints[0];
+        straightLinePath.push(nextPoint);
+
+        if (nextPoint.type !== 'littlebit') {
+            foundEndPoint = true;
+        } else {
+            currentPathPoint = nextPoint;
+        }
+    }
+
+    // Work backwards through the path to find littlebit points connected to destination
+    for (let i = straightLinePath.length - 1; i >= 0; i--) {
+        const point = straightLinePath[i];
+        if (point.type !== 'littlebit') continue;
+
+        const connectsToDestination = mapData.connections.some(conn => {
+            if (arePointsEqual(conn.p1, point) || arePointsEqual(conn.p2, point)) {
+                const otherPoint = arePointsEqual(conn.p1, point) ? conn.p2 : conn.p1;
+                return arePointsEqual(otherPoint, destination);
+            }
+            return false;
+        });
+
+        if (connectsToDestination) {
+            const finalPath = [currentPos, ...straightLinePath.slice(0, i + 1)];
+            return {
+                possible: true,
+                path: finalPath,
+                finalAngle: Math.atan2(point.y - currentPos.y, point.x - currentPos.x)
+            };
+        }
+    }
+
+    // If no points connect to destination, find closest littlebit point
+    const littleBitPoints = straightLinePath.filter(p => p.type === 'littlebit');
+
+    if (littleBitPoints.length > 0) {
+        const closestPoint = littleBitPoints[0];
+        return {
+            possible: true,
+            path: [currentPos, closestPoint],
+            finalAngle: Math.atan2(closestPoint.y - currentPos.y, closestPoint.x - currentPos.x)
+        };
+    }
+
+    // If no littlebit points, move to next normal point
+    return {
+        possible: true,
+        path: [currentPos, normalPathCheck.path[1]],
+        finalAngle: Math.atan2(
+            normalPathCheck.path[1].y - currentPos.y,
+            normalPathCheck.path[1].x - currentPos.x
+        )
+    };
+}
+
 
 function isAtTargetAngle() {
     return Math.abs(calculateShortestTurn(playerAngle, targetAngle)) <= ANGLE_TOLERANCE;
@@ -673,7 +789,14 @@ function getSpriteRow(angle) {
 }
 
 
-// Update movement functions to work with forced rotation
+function isOnIncorrectDestination() {
+    // Check if current position is a destination point but not THE destination
+    const currentPoint = mapData.points.find(p => arePointsEqual(p, currentPlayerPosition));
+    return currentPoint && 
+           currentPoint.type === 'destination' && 
+           !arePointsEqual(currentPlayerPosition, destination);
+}
+
 function moveStraight() {
     if (gameOver || isMoving || currentConnections.length === 0 || isSpawning) {
         if (isMoving) {
@@ -688,12 +811,65 @@ function moveStraight() {
         return;
     }
     
+    // Special handling for incorrect destination
+    if (isOnIncorrectDestination()) {
+        // Find any valid connection leading away
+        const nextConnection = currentConnections[0];
+        if (nextConnection) {
+            const nextPos = arePointsEqual(nextConnection.p1, currentPlayerPosition) ? 
+                nextConnection.p2 : nextConnection.p1;
+            forcedRotation = false;
+            startPathMovement([currentPlayerPosition, nextPos], 
+                Math.atan2(nextPos.y - currentPlayerPosition.y, 
+                          nextPos.x - currentPlayerPosition.x));
+            return;
+        }
+    }
+    
     const pathCheck = canMoveStraightFor(blocks);
     
     if (!pathCheck.possible) {
         const message = pathCheck.validBlocks > 0 ?
             `Can only move straight for ${pathCheck.validBlocks} block${pathCheck.validBlocks > 1 ? 's' : ''}. ${pathCheck.reason}` :
             `Cannot move forward: ${pathCheck.reason}`;
+        return;
+    }
+    
+    forcedRotation = false;  // Reset forced rotation flag for normal movement
+    startPathMovement(pathCheck.path, pathCheck.finalAngle);
+}
+
+function moveLittleBit() {
+    if (gameOver || isMoving || currentConnections.length === 0 || isSpawning) {
+        return;
+    }
+    
+    const blocks = parseInt(document.getElementById('blockCount').value) || 1;
+    if (blocks > 5) {
+        alert("Maximum movement is 5 blocks");
+        document.getElementById('blockCount').value = "5";
+        return;
+    }
+    
+    // Special handling for incorrect destination
+    if (isOnIncorrectDestination()) {
+        // Find any valid connection leading away
+        const nextConnection = currentConnections[0];
+        if (nextConnection) {
+            const nextPos = arePointsEqual(nextConnection.p1, currentPlayerPosition) ? 
+                nextConnection.p2 : nextConnection.p1;
+            forcedRotation = false;
+            startPathMovement([currentPlayerPosition, nextPos], 
+                Math.atan2(nextPos.y - currentPlayerPosition.y, 
+                          nextPos.x - currentPlayerPosition.x));
+            return;
+        }
+    }
+    
+    const pathCheck = canMoveLittleBitFor(blocks);
+    
+    if (!pathCheck.possible) {
+        alert(`Cannot move forward: ${pathCheck.reason}`);
         return;
     }
     
@@ -743,6 +919,135 @@ function turnLeft() {
     if (possibleTurns.length > 0) {
         targetAngle = possibleTurns[0].angle;
         forcedRotation = true;
+    }
+}
+
+
+function moveDiagonalLeft() {
+    if (gameOver || isMoving || currentConnections.length === 0 || isSpawning) {
+        return;
+    }
+
+    // Get exact current angle and normalize it
+    const currentAngle = normalizeAngle(playerAngle);
+    // Calculate desired diagonal angle (45 degrees left)
+    const diagonalAngle = normalizeAngle(currentAngle - Math.PI / 4);
+    
+    // Get all possible connections and their angles
+    const possiblePaths = currentConnections
+        .map(connection => {
+            const nextPos = arePointsEqual(connection.p1, currentPlayerPosition) ? 
+                connection.p2 : connection.p1;
+            const dx = nextPos.x - currentPlayerPosition.x;
+            const dy = nextPos.y - currentPlayerPosition.y;
+            const angle = normalizeAngle(Math.atan2(dy, dx));
+            
+            // Calculate absolute angle difference
+            let angleDiff = Math.abs(normalizeAngle(angle - diagonalAngle));
+            // Ensure we're getting the smallest angle difference
+            if (angleDiff > Math.PI) {
+                angleDiff = 2 * Math.PI - angleDiff;
+            }
+            
+            return { 
+                connection, 
+                angle, 
+                angleDiff,
+                nextPos 
+            };
+        })
+        // Only keep paths that lead to the destination
+        .filter(path => arePointsEqual(path.nextPos, destination))
+        // Be much more lenient about the angle - accept paths within ~120 degrees
+        .filter(path => path.angleDiff < (2 * Math.PI / 3))
+        .sort((a, b) => a.angleDiff - b.angleDiff);
+
+    if (possiblePaths.length > 0) {
+        const chosenPath = possiblePaths[0];
+        targetAngle = chosenPath.angle;
+        forcedRotation = true;
+
+        // Create a promise for rotation completion
+        const rotationPromise = new Promise(resolve => {
+            const checkRotation = setInterval(() => {
+                if (Math.abs(normalizeAngle(playerAngle - targetAngle)) < 0.1) {
+                    clearInterval(checkRotation);
+                    resolve();
+                }
+            }, 50);
+        });
+
+        // Wait for rotation to complete before moving
+        rotationPromise.then(() => {
+            const pathCheck = canMoveStraightFor(1);
+            if (pathCheck.possible) {
+                startPathMovement(pathCheck.path, pathCheck.finalAngle);
+            }
+        });
+    }
+}
+
+function moveDiagonalRight() {
+    if (gameOver || isMoving || currentConnections.length === 0 || isSpawning) {
+        return;
+    }
+
+    // Get exact current angle and normalize it
+    const currentAngle = normalizeAngle(playerAngle);
+    // Calculate desired diagonal angle (45 degrees right)
+    const diagonalAngle = normalizeAngle(currentAngle + Math.PI / 4);
+    
+    // Get all possible connections and their angles
+    const possiblePaths = currentConnections
+        .map(connection => {
+            const nextPos = arePointsEqual(connection.p1, currentPlayerPosition) ? 
+                connection.p2 : connection.p1;
+            const dx = nextPos.x - currentPlayerPosition.x;
+            const dy = nextPos.y - currentPlayerPosition.y;
+            const angle = normalizeAngle(Math.atan2(dy, dx));
+            
+            // Calculate absolute angle difference
+            let angleDiff = Math.abs(normalizeAngle(angle - diagonalAngle));
+            // Ensure we're getting the smallest angle difference
+            if (angleDiff > Math.PI) {
+                angleDiff = 2 * Math.PI - angleDiff;
+            }
+            
+            return { 
+                connection, 
+                angle, 
+                angleDiff,
+                nextPos 
+            };
+        })
+        // Only keep paths that lead to the destination
+        .filter(path => arePointsEqual(path.nextPos, destination))
+        // Be much more lenient about the angle - accept paths within ~120 degrees
+        .filter(path => path.angleDiff < (2 * Math.PI / 3))
+        .sort((a, b) => a.angleDiff - b.angleDiff);
+
+    if (possiblePaths.length > 0) {
+        const chosenPath = possiblePaths[0];
+        targetAngle = chosenPath.angle;
+        forcedRotation = true;
+
+        // Create a promise for rotation completion
+        const rotationPromise = new Promise(resolve => {
+            const checkRotation = setInterval(() => {
+                if (Math.abs(normalizeAngle(playerAngle - targetAngle)) < 0.1) {
+                    clearInterval(checkRotation);
+                    resolve();
+                }
+            }, 50);
+        });
+
+        // Wait for rotation to complete before moving
+        rotationPromise.then(() => {
+            const pathCheck = canMoveStraightFor(1);
+            if (pathCheck.possible) {
+                startPathMovement(pathCheck.path, pathCheck.finalAngle);
+            }
+        });
     }
 }
 
@@ -1029,6 +1334,7 @@ function drawDebugInfo() {
             
             mapData.points.forEach(point => {
                 ctx.fillStyle = point.type === 'destination' ? '#ff4081' : 
+								point.type === 'littlebit' ? '#ffa500' : 
                                point.type === 'start' ? '#00c853' : '#2196f3';
                 ctx.beginPath();
                 ctx.arc(point.x * scale, point.y * scale, 7.5 * scale, 0, Math.PI * 2);
@@ -1137,6 +1443,8 @@ document.getElementById('blockCount').addEventListener('click', (e) => {
 });
 document.getElementById('leftBtn').addEventListener('click', turnLeft);
 document.getElementById('rightBtn').addEventListener('click', turnRight);
+document.getElementById('diagonalLeftBtn').addEventListener('click', moveDiagonalLeft);
+document.getElementById('diagonalRightBtn').addEventListener('click', moveDiagonalRight);
 document.getElementById('turnAroundBtn').addEventListener('click', turnAround);
 document.getElementById('goBackBtn').addEventListener('click', goBack);
 window.addEventListener('resize', resizeCanvas);
