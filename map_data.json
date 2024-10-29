@@ -517,17 +517,6 @@
       "type": "normal"
     },
     {
-      "x": 1466,
-      "y": 401,
-      "type": "destination",
-      "name": "hospital"
-    },
-    {
-      "x": 1436,
-      "y": 420,
-      "type": "normal"
-    },
-    {
       "x": 1304,
       "y": 260,
       "type": "normal"
@@ -541,6 +530,17 @@
       "x": 1178,
       "y": 216,
       "type": "littlebit"
+    },
+    {
+      "x": 1470,
+      "y": 415,
+      "type": "destination",
+      "name": "hospital"
+    },
+    {
+      "x": 1433,
+      "y": 423,
+      "type": "normal"
     }
   ],
   "connections": [
@@ -2354,70 +2354,6 @@
     },
     {
       "p1": {
-        "x": 1430,
-        "y": 517,
-        "type": "littlebit",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1436,
-        "y": 420,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1436,
-        "y": 420,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1434,
-        "y": 300,
-        "type": "normal",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
-        "x": 1436,
-        "y": 420,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1466,
-        "y": 401,
-        "type": "destination",
-        "id": null,
-        "name": "hospital"
-      }
-    },
-    {
-      "p1": {
-        "x": 1436,
-        "y": 420,
-        "type": "normal",
-        "id": null,
-        "name": null
-      },
-      "p2": {
-        "x": 1352,
-        "y": 435,
-        "type": "littlebit",
-        "id": null,
-        "name": null
-      }
-    },
-    {
-      "p1": {
         "x": 1361,
         "y": 278,
         "type": "littlebit",
@@ -2494,6 +2430,70 @@
         "type": "normal",
         "id": null,
         "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1430,
+        "y": 517,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1433,
+        "y": 423,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1433,
+        "y": 423,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1352,
+        "y": 435,
+        "type": "littlebit",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1433,
+        "y": 423,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1434,
+        "y": 300,
+        "type": "normal",
+        "id": null,
+        "name": null
+      }
+    },
+    {
+      "p1": {
+        "x": 1433,
+        "y": 423,
+        "type": "normal",
+        "id": null,
+        "name": null
+      },
+      "p2": {
+        "x": 1470,
+        "y": 415,
+        "type": "destination",
+        "id": null,
+        "name": "hospital"
       }
     }
   ]
